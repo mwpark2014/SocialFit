@@ -1,5 +1,5 @@
 const config = {
-  mongoURL: process.env.MONGO_URL || 'mongodb://localhost:27017/mern-starter',
+  mongoURL: process.env.MONGO_URL || 'mongodb://<dbuser>:<dbpassword>@{mlab_url}/socialfit-db',
   port: process.env.PORT || 8000,
 };
 
