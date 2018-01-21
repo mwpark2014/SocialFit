@@ -1,9 +1,9 @@
 {
-  "presets": ["react", "env", "stage-0"],
+  "presets": ["react", "env", "flow", "stage-0"],
   "plugins": ["react-hot-loader/babel"],
   "env": {
     "production": {
-      "presets": ["env", "react", "react-optimize", "es2015-native-modules", "stage-0"]
+      "presets": ["env", "react", "flow", "react-optimize", "es2015-native-modules", "stage-0"]
     }
   }
 }
