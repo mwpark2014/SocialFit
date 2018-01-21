@@ -7,6 +7,7 @@ import styles from '../App.css';
 import { intlShape } from 'react-intl';
 import { intl } from '../../../util/react-intl-test-helper';
 import { toggleAddPost } from '../AppActions';
+import PropTypes from 'prop-types';
 
 const intlProp = { ...intl, enabledLanguages: ['en', 'fr'] };
 const children = <h1>Test</h1>;
@@ -49,7 +50,7 @@ test('calls componentDidMount', t => {
         intl,
       },
       childContextTypes: {
-        router: React.PropTypes.object,
+        router: PropTypes.object,
         intl: intlShape,
       },
     },

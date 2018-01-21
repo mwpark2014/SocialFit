@@ -1,7 +1,7 @@
 {
-  "name": "mern-starter",
+  "name": "socialfit",
   "version": "2.0.0",
-  "description": "Boilerplate project for building Isomorphic apps using React and Redux",
+  "description": "Facebook Clone with health/fitness theme implemented by extending mern-starter boilerplate project for building Isomorphic apps using React and Redux",
   "scripts": {
     "test": "cross-env NODE_ENV=test PORT=8080 MONGO_URL=mongodb://localhost:27017/mern-test node_modules/.bin/nyc node --harmony-proxies node_modules/.bin/ava",
     "watch:test": "npm run test -- --watch",
@@ -22,13 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hashnode/mern-starter.git"
+    "url": "git+https://github.com/mwpark2014/SocialFit"
   },
-  "bugs": {
-    "url": "https://github.com/Hashnode/mern-starter/issues"
-  },
-  "homepage": "https://github.com/Hashnode/mern-starter#readme",
-  "author": "Prashant Abhishek <prashant.abhishek7g@gmail.com>, Mayank Chandola <imayankchd@gmail.com>, Sandeep Panda <sandeep@hashnode.com>, Syed Fazle Rahman <fazle@hashnode.com>, Alkshendra Maurya <alkshendra@hashnode.com>",
+  "homepage": "https://github.com/mwpark2014/SocialFit",
+  "author": "Mason Park",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.9.1",
@@ -39,7 +36,6 @@
     "cross-env": "^1.0.8",
     "cuid": "^1.3.8",
     "express": "^4.13.4",
-    "express-handlebars": "*",
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
