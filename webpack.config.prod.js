@@ -6,6 +6,9 @@ var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
 var cssnano = require('cssnano');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+
 
 module.exports = {
   devtool: 'hidden-source-map',
@@ -59,6 +62,7 @@ module.exports = {
   },
 
   plugins: [
+    new HtmlWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),

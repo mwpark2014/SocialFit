@@ -5,6 +5,12 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
+// Authentication / Authorization packages
+import exphbs from 'express-handlebars';
+import expressValidator from 'express-validator';
+import session from 'express-session';
+import passport from 'passport';
+
 // Webpack Requirements
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
@@ -50,12 +56,43 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
   dummyData();
 });
 
+// Apply handlebars as view engine
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 app.use('/api', posts);
+
+// Express Session
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true,
+}));
+
+// Express messages
+app.use(require('connect-flash')());
+app.use((req, res, next) => {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+// Express validator
+app.use(expressValidator({
+  errorFormatter: (param, msg, value) => {
+    const namespace = param.split('.');
+    const root = namespace.shift();
+    let formParam = root;
+
+    while (namespace.length) {
+      formParam += `[${namespace.shift()}]`;
+    }
+    return { param: formParam, msg, value };
+  },
+}));
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
