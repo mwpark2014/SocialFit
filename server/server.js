@@ -6,10 +6,11 @@ import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
 // Authentication / Authorization packages
-import exphbs from 'express-handlebars';
-import expressValidator from 'express-validator';
 import session from 'express-session';
 import passport from 'passport';
+import { Strategy, ExtractJwt } from 'passport-jwt';
+import LocalStrategy from 'passport-local';
+import User from './models/user';
 
 // Webpack Requirements
 import webpack from 'webpack';
@@ -35,10 +36,11 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import Helmet from 'react-helmet';
 
-// Import required modules
+// Import routes, util, and dummy data
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
+import auth from './routes/authentication.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -56,43 +58,13 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
   dummyData();
 });
 
-// Apply handlebars as view engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
 // Apply body Parser and server public assets and routes
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
+
 app.use('/api', posts);
-
-// Express Session
-app.use(session({
-  secret: 'secret',
-  saveUninitialized: true,
-  resave: true,
-}));
-
-// Express messages
-app.use(require('connect-flash')());
-app.use((req, res, next) => {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
-// Express validator
-app.use(expressValidator({
-  errorFormatter: (param, msg, value) => {
-    const namespace = param.split('.');
-    const root = namespace.shift();
-    let formParam = root;
-
-    while (namespace.length) {
-      formParam += `[${namespace.shift()}]`;
-    }
-    return { param: formParam, msg, value };
-  },
-}));
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -138,6 +110,46 @@ const renderError = err => {
     `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
   return renderFullPage(`Server Error${errTrace}`, {});
 };
+
+// Setting up local login strategy
+const localLogin = new LocalStrategy((username, password, done) => {
+  User.findOne({ username }, (userErr, user) => {
+    if (userErr) { return done(userErr); }
+    if (!user) { return done(null, false, { error: 'Your login details could not be verified. Please try again.' }); }
+
+    return user.comparePassword(password, (passErr, isMatch) => {
+      if (passErr) { return done(passErr); }
+      if (!isMatch) { return done(null, false, { error: 'Your login details could not be verified. Please try again.' }); }
+
+      return done(null, user);
+    });
+  });
+});
+
+const jwtOptions = {
+  // Telling Passport to check authorization headers for JWT
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
+  // Telling Passport where to find the secret
+  secretOrKey: serverConfig.secret,
+};
+
+// Setting up JWT login strategy
+const jwtLogin = new Strategy(jwtOptions, (payload, done) => {
+  User.findById(payload._id, (err, user) => {
+    if (err) return done(err, false);
+
+    if (user) return done(null, user);
+
+    return done(null, false);
+  });
+});
+
+// Allow passport to use strategies
+passport.use(jwtLogin);
+passport.use(localLogin);
+
+// Add routing for authentication
+app.use('/api/auth', auth);
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res, next) => {

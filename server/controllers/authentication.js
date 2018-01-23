@@ -1,0 +1,74 @@
+import jwt from 'jsonwebtoken';
+import User from '../models/user';
+import config from '../config';
+
+function generateToken(user) {
+  return jwt.sign(user, config.secret, {
+    expiresIn: 10080, // in seconds
+  });
+}
+
+function setUserInfo(request) {
+  return {
+    _id: request._id,
+    name: request.name,
+    username: request.username,
+    email: request.email,
+  };
+}
+
+export function login(req, res, next) {
+  const userInfo = setUserInfo(req.user);
+
+  req.status(200).json({
+    token: `JWT ${generateToken(userInfo)}`,
+    user: userInfo,
+  });
+}
+
+export function register(req, res, next) { // eslint-disable-line consistent-return
+  const email = req.body.email;
+  const name = req.body.name;
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (!email) {
+    return res.status(422).send({ error: 'You must enter an email address.' });
+  }
+
+  if (!name) {
+    return res.status(422).send({ error: 'You must enter a name.' });
+  }
+
+  if (!password) {
+    return res.status(422).send({ error: 'You must enter a password.' });
+  }
+
+  User.findOne({ username }, (err, existingUser) => { // eslint-disable-line consistent-return
+    if (err) return next(err);
+
+    // If user is not unique, return error
+    if (existingUser) {
+      return res.status(422).send({ error: 'Username already in use.' });
+    }
+
+    // If email is unique and pw provided, create account
+    const user = new User({
+      email,
+      username,
+      password,
+      name,
+    });
+
+    user.save((err, user) => {
+      if (err) return next(err);
+
+      const userInfo = setUserInfo(user);
+
+      res.status(201).json({
+        token: `JWT ${generateToken(userInfo)}`,
+        user: userInfo,
+      });
+    });
+  });
+}

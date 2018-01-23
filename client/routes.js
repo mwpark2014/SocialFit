@@ -27,7 +27,7 @@ export default (
     <IndexRoute
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
+          cb(null, require('./modules/Auth/pages/LoginPage').default);
         });
       }}
     />
@@ -35,15 +35,15 @@ export default (
       path="/register"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
+          cb(null, require('./modules/Auth/pages/RegisterPage').default);
         });
       }}
     />
     <Route
-      path="/users"
+      path="/posts"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
+          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
         });
       }}
     />
