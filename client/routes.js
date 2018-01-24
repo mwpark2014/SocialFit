@@ -40,6 +40,14 @@ export default (
       }}
     />
     <Route
+      path="/me"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Dash/pages/DashboardPage').default);
+        });
+      }}
+    />
+    <Route
       path="/posts"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {

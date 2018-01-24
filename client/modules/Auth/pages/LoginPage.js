@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Form from 'react-router-form';
+
+import { loginUser } from '../AuthActions';
 
 // Import Style
 // import styles from '../../components/Auth/PostListItem.css';
@@ -13,18 +16,10 @@ import { connect } from 'react-redux';
 
 export function LoginPage() {
   return (
-    <form method="post" action="/login">
-      <div>
-        <label>Name</label>
-        <input type="text" name="name" placeholder="Name" required />
-      </div>
+    <Form to="/api/auth/login" method="post">
       <div>
         <label>Username</label>
         <input type="text" name="username" placeholder="Username" required />
-      </div>
-      <div>
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Email" required />
       </div>
       <div>
         <label>Password</label>
@@ -35,8 +30,15 @@ export function LoginPage() {
         <input type="password" name="password2" placeholder="Password" required />
       </div>
       <button type="submit">Login</button>
-    </form>
+    </Form>
   );
 }
 
-export default connect()(LoginPage);
+function mapStateToProps(state) {
+  return {
+    errorMessage: state.auth.error,
+    message: state.auth.message,
+  };
+}
+
+export default connect(mapStateToProps, { loginUser })(LoginPage);

@@ -18,7 +18,7 @@ function setUserInfo(request) {
 }
 
 export function login(req, res, next) {
-  const userInfo = setUserInfo(req.user);
+  const userInfo = setUserInfo(req);
 
   req.status(200).json({
     token: `JWT ${generateToken(userInfo)}`,
@@ -52,7 +52,7 @@ export function register(req, res, next) { // eslint-disable-line consistent-ret
       return res.status(422).send({ error: 'Username already in use.' });
     }
 
-    // If email is unique and pw provided, create account
+    // If user is unique and pw provided, create account
     const user = new User({
       email,
       username,

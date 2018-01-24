@@ -38,7 +38,7 @@ userSchema.pre('save', function (next) { // eslint-disable-line func-names, cons
 
   bcrypt.genSalt(SALT_FACTOR, (saltErr, salt) => {
     if (saltErr) return next(saltErr);
-    bcrypt.hash(user.password, salt, null, (hashErr, hash) => {
+    bcrypt.hash(user.password, salt, (hashErr, hash) => {
       if (hashErr) return next(hashErr);
       user.password = hash;
       next();
