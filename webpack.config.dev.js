@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
+import Styles from 'style-loader!css-loader?localIdentName=[name]__[local]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader';
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -35,25 +36,26 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: 'style-loader!css-loader?localIdentName=[name]__[local]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
+        use: { loader: Styles },
       }, {
         test: /\.css$/,
         include: /node_modules/,
-        loaders: ['style-loader', 'css-loader'],
+        use: [ { loader: 'style-loader' },
+          { loader: 'css-loader' } ],
       }, {
         test: /\.jsx*$/,
         exclude: [/node_modules/, /.+\.config.js/],
-        loader: 'babel',
+        use: [ { loader: 'babel' } ],
       }, {
         test: /\.(jpe?g|gif|png|svg)$/i,
-        loader: 'url-loader?limit=10000',
+        use: [ { loader: 'url-loader?limit=10000' } ],
       }, {
         test: /\.json$/,
-        loader: 'json-loader',
+        use: [ { loader: 'json-loader' } ],
       },
     ],
   },

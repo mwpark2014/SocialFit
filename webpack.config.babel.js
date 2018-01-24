@@ -3,6 +3,8 @@ var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
 
 var cssModulesIdentName = '[name]__[local]__[hash:base64:5]';
+import Styles from ('style-loader!css-loader?localIdentName=' + cssModulesIdentName + '&modules&importLoaders=1&sourceMap!postcss-loader');
+
 if (process.env.NODE_ENV === 'production') {
   cssModulesIdentName = '[hash:base64]';
 }
@@ -20,15 +22,15 @@ module.exports = {
     ],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
+        use: [ { loader: Styles } ],
         exclude: /node_modules/,
-        loader: 'style-loader!css-loader?localIdentName=' + cssModulesIdentName + '&modules&importLoaders=1&sourceMap!postcss-loader',
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$/i,
-        loader: 'url-loader?limit=10000',
+        use: [ { loader: 'url-loader?limit=10000' } ],
       },
     ],
   },
