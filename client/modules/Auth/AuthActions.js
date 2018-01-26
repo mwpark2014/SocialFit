@@ -19,12 +19,13 @@ export function logoutUser() {
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
 
-  if (error.data.error) {
-    errorMessage = error.data.error;
-  } else if (error.data) {
-    errorMessage = error.data;
-  } else {
+  if (error) {
     errorMessage = error;
+    if (error.data) {
+      errorMessage = error.data;
+      if (error.data.error) // eslint-disable-line curly
+        errorMessage = error.data.error;
+    }
   }
 
   if (error.status === 401) {
@@ -47,7 +48,7 @@ export function loginUser({ username, password }) {
     .then(response => {
       cookie.save('token', response.data.token, { path: '/' });
       dispatch({ type: AUTH_USER });
-      // TODO: redirecto to dashboard
+      // TODO: redirect to dashboard
       alert('Successfully logged in!');
     })
     .catch((error) => {
@@ -56,15 +57,18 @@ export function loginUser({ username, password }) {
   };
 }
 
-export function registerUser({ email, username, name, password }) {  
+export function registerUser({ email, username, name, password }) {
   return (dispatch) => {
     callApi('auth/register', 'post', { email, username, name, password })
     .then(response => {
-      cookie.save('token', response.data.token, { path: '/' });
+      console.log("Success");
+      cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER });
       // TODO: redirect to dashboard
+      console.log("Registered");
     })
     .catch((error) => {
+      console.log("Error");
       errorHandler(dispatch, error.response, AUTH_ERROR);
     });
   };

@@ -20,7 +20,7 @@ function setUserInfo(request) {
 export function login(req, res, next) {
   const userInfo = setUserInfo(req);
 
-  req.status(200).json({
+  res.status(200).json({
     token: `JWT ${generateToken(userInfo)}`,
     user: userInfo,
   });

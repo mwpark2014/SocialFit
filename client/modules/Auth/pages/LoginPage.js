@@ -25,10 +25,6 @@ export function LoginPage() {
         <label>Password</label>
         <input type="password" name="password" placeholder="Password" required />
       </div>
-      <div>
-        <label>Confirm Password</label>
-        <input type="password" name="password2" placeholder="Password" required />
-      </div>
       <button type="submit">Login</button>
     </Form>
   );
