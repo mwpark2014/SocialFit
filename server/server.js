@@ -6,7 +6,6 @@ import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
 // Authentication / Authorization packages
-import session from 'express-session';
 import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import LocalStrategy from 'passport-local';

@@ -46,10 +46,10 @@ export function loginUser({ username, password }) {
   return (dispatch) => {
     callApi('auth/login', 'post', { username, password })
     .then(response => {
-      cookie.save('token', response.data.token, { path: '/' });
+      cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER });
       // TODO: redirect to dashboard
-      alert('Successfully logged in!');
+      alert('Successfully logged in!'); // eslint-disable-line
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR);
@@ -61,14 +61,12 @@ export function registerUser({ email, username, name, password }) {
   return (dispatch) => {
     callApi('auth/register', 'post', { email, username, name, password })
     .then(response => {
-      console.log("Success");
       cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER });
       // TODO: redirect to dashboard
-      console.log("Registered");
+      alert('Sucessfully registerd!'); // eslint-disable-line
     })
     .catch((error) => {
-      console.log("Error");
       errorHandler(dispatch, error.response, AUTH_ERROR);
     });
   };
