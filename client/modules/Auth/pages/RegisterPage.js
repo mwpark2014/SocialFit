@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 // import styles from '../../components/PostListItem/PostListItem.css';
 
 // Import Actions
-import { registerUser } from '../AuthActions';
+import * as actions from '../AuthActions';
 
 // Import Selectors
 // import { getPost } from '../../PostReducer';
@@ -82,16 +82,9 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    registerUser: ({ name, email, username, password }) =>
-      registerUser({ name, email, username, password })(dispatch),
-  };
-}
-
 RegisterPage.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
+export default connect(mapStateToProps, actions)(RegisterPage);
