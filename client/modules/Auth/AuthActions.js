@@ -64,10 +64,10 @@ export function registerUser({ email, username, name, password }) {
       cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER });
       // TODO: redirect to dashboard
-      alert('Sucessfully registerd!'); // eslint-disable-line
+      alert('Sucessfully registered!'); // eslint-disable-line
     })
     .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR);
+      errorHandler(dispatch, error.error, AUTH_ERROR);
     });
   };
 }

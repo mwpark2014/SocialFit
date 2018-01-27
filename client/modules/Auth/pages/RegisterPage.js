@@ -17,6 +17,7 @@ export class RegisterPage extends Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }

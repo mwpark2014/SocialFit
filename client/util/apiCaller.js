@@ -18,9 +18,5 @@ export default function callApi(endpoint, method = 'get',
       return Promise.reject(json);
     }
     return Promise.resolve(json);
-  })
-  .then(
-    response => response,
-    error => error
-  );
+  });
 }
