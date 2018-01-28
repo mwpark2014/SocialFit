@@ -17,6 +17,7 @@ export class RegisterPage extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { name: '', username: '', email: '', password: '', password2: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -33,6 +34,8 @@ export class RegisterPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // Clear all the fields
+    this.state = { name: '', username: '', email: '', password: '', password2: '' };
     this.props.registerUser({ username: this.state.username,
                    name: this.state.name,
                    email: this.state.email,
@@ -45,27 +48,27 @@ export class RegisterPage extends Component {
         <div>
           <label>Name</label>
           <input type="text" name="name" placeholder="Name" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.name} required />
         </div>
         <div>
           <label>Username</label>
           <input type="text" name="username" placeholder="Username" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.username} required />
         </div>
         <div>
           <label>Email</label>
           <input type="email" name="email" placeholder="Email" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.email} required />
         </div>
         <div>
           <label>Password</label>
           <input type="password" name="password" placeholder="Password" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.password} required />
         </div>
         <div>
           <label>Confirm Password</label>
           <input type="password" name="password2" placeholder="Password" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.password2} required />
         </div>
         <button type="submit">Register</button>
         <br />

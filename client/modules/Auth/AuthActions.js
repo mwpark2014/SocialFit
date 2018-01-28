@@ -28,9 +28,7 @@ export function errorHandler(dispatch, error, type) {
 }
 
 export function logoutUser() {
-  console.log("???");
   return (dispatch) => {
-    console.log("????");
     dispatch({ type: UNAUTH_USER });
     cookie.remove('token', { path: '/' });
     browserHistory.push('/');

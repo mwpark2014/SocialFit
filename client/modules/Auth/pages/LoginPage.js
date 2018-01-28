@@ -15,10 +15,11 @@ export class LoginPage extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { name: '', username: '', email: '', password: '', password2: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  
+
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
@@ -31,6 +32,8 @@ export class LoginPage extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
+    // Clear all the fields
+    this.state = { name: '', username: '', email: '', password: '', password2: '' };
     this.props.loginUser({ username: this.state.username,
                    password: this.state.password });
   }
@@ -41,12 +44,12 @@ export class LoginPage extends Component {
         <div>
           <label>Username</label>
           <input type="text" name="username" placeholder="Username" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.username} required />
         </div>
         <div>
           <label>Password</label>
           <input type="password" name="password" placeholder="Password" // eslint-disable-line
-            onChange={this.handleInputChange} required />
+            onChange={this.handleInputChange} value={this.state.password} required />
         </div>
         <button type="submit">Login</button>
       </form>
