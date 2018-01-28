@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 // import styles from '../../components/PostListItem/PostListItem.css';
 
 // Import Actions
-import * as actions from '../AuthActions';
+import { registerUser } from '../AuthActions';
 
 // Import Selectors
 // import { getPost } from '../../PostReducer';
@@ -17,7 +17,6 @@ export class RegisterPage extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -86,6 +85,7 @@ function mapStateToProps(state) {
 RegisterPage.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  registerUser: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, actions)(RegisterPage);
+export default connect(mapStateToProps, { registerUser })(RegisterPage);

@@ -1,5 +1,6 @@
 import callApi from '../../util/apiCaller';
 import cookie from 'react-cookie';
+import { browserHistory } from 'react-router';
 
 export const AUTH_USER = 'auth_user';
 export const UNAUTH_USER = 'unauth_user';
@@ -8,32 +9,16 @@ export const FORGOT_PASSWORD_REQUEST = 'forgot_password_request';
 export const RESET_PASSWORD_REQUEST = 'reset_password_request';
 export const PROTECTED_TEST = 'protected_test';
 
-export function logoutUser() {
-  return (dispatch) => {
-    dispatch({ type: UNAUTH_USER });
-    cookie.remove('token', { path: '/' });
-    // TODO: redirect to login page
-  };
-}
-
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
+  if (error.error) errorMessage = error.error;
 
-  if (error) {
-    errorMessage = error;
-    if (error.data) {
-      errorMessage = error.data;
-      if (error.data.error) // eslint-disable-line curly
-        errorMessage = error.data.error;
-    }
-  }
-
-  if (error.status === 401) {
+  if (error.response.status === 401) {
     dispatch({
       type,
       payload: 'You are not authorized to do this. Please login and try again.',
     });
-    logoutUser();
+    logoutUser()(dispatch); // eslint-disable-line no-use-before-define
   } else {
     dispatch({
       type,
@@ -42,17 +27,26 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
+export function logoutUser() {
+  console.log("???");
+  return (dispatch) => {
+    console.log("????");
+    dispatch({ type: UNAUTH_USER });
+    cookie.remove('token', { path: '/' });
+    browserHistory.push('/');
+  };
+}
+
 export function loginUser({ username, password }) {
   return (dispatch) => {
     callApi('auth/login', 'post', { username, password })
     .then(response => {
       cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER });
-      // TODO: redirect to dashboard
-      alert('Successfully logged in!'); // eslint-disable-line
+      browserHistory.push('/me');
     })
     .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR);
+      errorHandler(dispatch, error, AUTH_ERROR);
     });
   };
 }
@@ -63,11 +57,10 @@ export function registerUser({ email, username, name, password }) {
     .then(response => {
       cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER });
-      // TODO: redirect to dashboard
-      alert('Sucessfully registered!'); // eslint-disable-line
+      browserHistory.push('/me');
     })
     .catch((error) => {
-      errorHandler(dispatch, error.error, AUTH_ERROR);
+      errorHandler(dispatch, error, AUTH_ERROR);
     });
   };
 }
@@ -84,7 +77,7 @@ export function protectedTest() {
       });
     })
     .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR);
+      errorHandler(dispatch, error, AUTH_ERROR);
     });
   };
 }

@@ -148,7 +148,7 @@ passport.use(jwtLogin);
 passport.use(localLogin);
 
 // Add routing for authentication
-app.use('/api/auth', auth);
+auth(app);
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res, next) => {

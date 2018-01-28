@@ -17,12 +17,18 @@ function setUserInfo(request) {
   };
 }
 
-export function login(req, res, next) {
+export function loginSucess(req, res, next) {
   const userInfo = setUserInfo(req);
 
   res.status(200).json({
     token: `JWT ${generateToken(userInfo)}`,
     user: userInfo,
+  });
+}
+
+export function loginFail(err, req, res, next) {
+  res.status(401).json({
+    error: err.message,
   });
 }
 

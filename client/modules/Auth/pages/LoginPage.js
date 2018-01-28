@@ -1,32 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Form from 'react-router-form';
-
-import { loginUser } from '../AuthActions';
 
 // Import Style
 // import styles from '../../components/Auth/PostListItem.css';
 
 // Import Actions
-// import * from '../../Auth/AuthActions';
+import { loginUser } from '../AuthActions';
 
 // Import Selectors
 // import { getPost } from '../../AuthReducer';
 
-export function LoginPage() {
-  return (
-    <Form to="/api/auth/login" method="post">
-      <div>
-        <label>Username</label>
-        <input type="text" name="username" placeholder="Username" required />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password" required />
-      </div>
-      <button type="submit">Login</button>
-    </Form>
-  );
+export class LoginPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+  
+    this.setState({
+      [name]: value,
+    });
+  }
+  
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.loginUser({ username: this.state.username,
+                   password: this.state.password });
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username" // eslint-disable-line
+            onChange={this.handleInputChange} required />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password" // eslint-disable-line
+            onChange={this.handleInputChange} required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    );
+  }
 }
 
 function mapStateToProps(state) {
@@ -35,5 +60,11 @@ function mapStateToProps(state) {
     message: state.auth.message,
   };
 }
+
+LoginPage.propTypes = {
+  errorMessage: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  loginUser: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, { loginUser })(LoginPage);
