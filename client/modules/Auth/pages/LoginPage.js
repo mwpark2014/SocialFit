@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormGroup, FormControl, Button,
+  ControlLabel, Row, Col } from 'react-bootstrap';
 
 // Import Style
 // import styles from '../../components/Auth/PostListItem.css';
@@ -29,7 +31,7 @@ export class LoginPage extends Component {
       [name]: value,
     });
   }
-  
+
   handleSubmit(event) {
     event.preventDefault();
     // Clear all the fields
@@ -41,17 +43,29 @@ export class LoginPage extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input type="text" name="username" placeholder="Username" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.username} required />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Password" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.password} required />
-        </div>
-        <button type="submit">Login</button>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Username</ControlLabel>
+            </Col>
+            <Col md={4}>
+            <FormControl type="text" name="username" placeholder="Username" // eslint-disable-line
+              onChange={this.handleInputChange} value={this.state.username} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Password</ControlLabel>
+            </Col>
+            <Col md={4}>
+            <FormControl type="password" name="password" placeholder="Password" // eslint-disable-line
+              onChange={this.handleInputChange} value={this.state.password} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <Button type="submit">Login</Button>
       </form>
     );
   }

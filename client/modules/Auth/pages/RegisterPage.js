@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { FormGroup, FormControl, Button,
+  ControlLabel, Row, Col } from 'react-bootstrap';
 
 // Import Style
 // import styles from '../../components/PostListItem/PostListItem.css';
@@ -45,34 +47,64 @@ export class RegisterPage extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Name" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.name} required />
-        </div>
-        <div>
-          <label>Username</label>
-          <input type="text" name="username" placeholder="Username" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.username} required />
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" name="email" placeholder="Email" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.email} required />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Password" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.password} required />
-        </div>
-        <div>
-          <label>Confirm Password</label>
-          <input type="password" name="password2" placeholder="Password" // eslint-disable-line
-            onChange={this.handleInputChange} value={this.state.password2} required />
-        </div>
-        <button type="submit">Register</button>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Name</ControlLabel>
+            </Col>
+            <Col md={4}>
+              <FormControl type="text" name="name" placeholder="Name" // eslint-disable-line
+                onChange={this.handleInputChange} value={this.state.name} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Username</ControlLabel>
+            </Col>
+            <Col md={4}>
+              <FormControl type="text" name="username" placeholder="Username" // eslint-disable-line
+                onChange={this.handleInputChange} value={this.state.username} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Email</ControlLabel>
+            </Col>
+            <Col md={4}>
+              <FormControl type="email" name="email" placeholder="Email" // eslint-disable-line
+                onChange={this.handleInputChange} value={this.state.email} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Password</ControlLabel>
+            </Col>
+            <Col md={4}>
+              <FormControl type="password" name="password" placeholder="Password" // eslint-disable-line
+                onChange={this.handleInputChange} value={this.state.password} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col md={2}>
+              <ControlLabel>Confirm Password</ControlLabel>
+            </Col>
+            <Col md={4}>
+              <FormControl type="password" name="password2" placeholder="Password" // eslint-disable-line
+                onChange={this.handleInputChange} value={this.state.password2} required />
+            </Col>
+          </Row>
+        </FormGroup>
+        <Button type="submit">Register</Button>
         <br />
-        Have you already registered? <Link to="/">Login</Link>
+        Have you already registered? <Link to="/">Sign in</Link>
       </form>
     );
   }
