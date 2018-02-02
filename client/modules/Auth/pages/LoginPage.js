@@ -30,6 +30,7 @@ LoginPage.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   loginUser: PropTypes.func.isRequired,
+  test: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, { loginUser })(LoginPage);

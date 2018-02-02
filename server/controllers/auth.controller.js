@@ -1,20 +1,12 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import config from '../config';
+import setUserInfo from '../util/helpers';
 
 function generateToken(user) {
   return jwt.sign(user, config.secret, {
     expiresIn: 10080, // in seconds
   });
-}
-
-function setUserInfo(request) {
-  return {
-    _id: request._id,
-    name: request.name,
-    username: request.username,
-    email: request.email,
-  };
 }
 
 export function loginSucess(req, res, next) {

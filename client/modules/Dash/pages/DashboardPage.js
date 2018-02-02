@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -6,15 +6,31 @@ import { connect } from 'react-redux';
 // import styles from '../../components/Auth/PostListItem.css';
 
 // Import Actions
-// import * from '../../Auth/AuthActions';
+import { protectedTest } from '../../Auth/AuthActions';
 
 // Import Selectors
 // import { getPost } from '../../AuthReducer';
 
-export function DashboardPage() {
-  return (
-    <div>Your dashboard!</div>
-  );
+export class DashboardPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.props.protectedTest();
+  }
+
+  render() {
+    return (
+      <div>Your dashboard!</div>
+    );
+  }
 }
 
-export default connect()(DashboardPage);
+function mapStateToProps(state) {
+  return { content: state.auth.content };
+}
+
+DashboardPage.propTypes = {
+  protectedTest: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, { protectedTest })(DashboardPage);

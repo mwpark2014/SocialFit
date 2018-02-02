@@ -63,6 +63,38 @@ export function registerUser({ email, username, name, password }) {
   };
 }
 
+export function getForgotPasswordToken({ email }) {
+  return (dispatch) => {
+    callApi('/auth/forgot-password', 'post', { email })
+    .then((response) => {
+      dispatch({
+        type: FORGOT_PASSWORD_REQUEST,
+        payload: response.data.message,
+      });
+    })
+    .catch((error) => {
+      errorHandler(dispatch, error.response, AUTH_ERROR);
+    });
+  };
+}
+
+export function resetPassword(token, { password }) {
+  return (dispatch) => {
+    callApi(`/auth/reset-password/${token}`, 'post', { password })
+    .then((response) => {
+      dispatch({
+        type: RESET_PASSWORD_REQUEST,
+        payload: response.data.message,
+      });
+      // Redirect to login page on successful password reset
+      browserHistory.push('/login');
+    })
+    .catch((error) => {
+      errorHandler(dispatch, error.response, AUTH_ERROR);
+    });
+  };
+}
+
 export function protectedTest() {
   return (dispatch) => {
     callApi('auth/protected', 'get', { /* body */ },
