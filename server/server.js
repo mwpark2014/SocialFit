@@ -110,14 +110,15 @@ auth(app);
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res, next) => {
   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+    // If error in route matching
     if (err) {
       return res.status(500).end(renderError(err));
     }
-
+    // If redirect
     if (redirectLocation) {
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
-
+    // If no route could be found
     if (!renderProps) {
       return next();
     }
