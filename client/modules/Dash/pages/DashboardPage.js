@@ -15,7 +15,7 @@ export class DashboardPage extends Component {
   constructor(props) {
     super(props);
 
-    this.props.protectedTest();
+    this.props.protectedTest(this.props.history);
   }
 
   render() {

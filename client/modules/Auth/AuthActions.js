@@ -9,8 +9,7 @@ export const FORGOT_PASSWORD_REQUEST = 'forgot_password_request';
 export const RESET_PASSWORD_REQUEST = 'reset_password_request';
 export const PROTECTED_TEST = 'protected_test';
 
-export function errorHandler(dispatch, error, type) {
-  console.log(error);
+export function errorHandler(dispatch, error, type, history = null) {
   let errorMessage = '';
   if (error.error) errorMessage = error.error;
 
@@ -19,7 +18,7 @@ export function errorHandler(dispatch, error, type) {
       type,
       payload: 'You are not authorized to do this. Please login and try again.',
     });
-    logoutUser()(dispatch); // eslint-disable-line no-use-before-define
+    logoutUser(history)(dispatch); // eslint-disable-line no-use-before-define
   } else {
     dispatch({
       type,
@@ -28,11 +27,14 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
-export function logoutUser() {
+export function logoutUser(history = null) {
   return (dispatch) => {
     dispatch({ type: UNAUTH_USER });
     cookie.remove('token', { path: '/' });
-    browserHistory.push('/');
+    if (!history) // eslint-disable-line curly
+      browserHistory.push('/');
+    else // eslint-disable-line curly
+      history.push('/');
   };
 }
 
@@ -96,9 +98,8 @@ export function resetPassword(token, { password }) {
   };
 }
 
-export function protectedTest() {
+export function protectedTest(history) {
   return (dispatch) => {
-    console.log(cookie.load('token'));
     callApi('auth/protected', 'get', undefined,
       { 'content-type': 'application/json',
           Authorization: cookie.load('token'),
@@ -110,7 +111,7 @@ export function protectedTest() {
       });
     })
     .catch((error) => {
-      errorHandler(dispatch, error, AUTH_ERROR);
+      errorHandler(dispatch, error, AUTH_ERROR, history);
     });
   };
 }
