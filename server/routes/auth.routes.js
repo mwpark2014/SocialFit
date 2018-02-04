@@ -2,8 +2,11 @@ import * as AuthenticationController from '../controllers/auth.controller';
 import * as UserController from '../controllers/user.controller';
 import passport from 'passport';
 import { Router } from 'express';
+import passportService from '../config/passport';
 
-const requireAuth = passport.authenticate('jwt', { session: false });
+passportService();
+
+const requireAuth = passport.authenticate('jwt', { failWithError: true, session: false });
 const requireLogin = passport.authenticate('local', { failWithError: true, session: false });
 
 const apiRoutes = new Router();
@@ -20,21 +23,20 @@ export default function (app) {
   authRoutes.post('/register', AuthenticationController.register);
 
   // Login route
-  authRoutes.post('/login', requireLogin, AuthenticationController.loginSucess,
+  authRoutes.post('/login', requireLogin, AuthenticationController.loginSuccess,
     AuthenticationController.loginFail);
 
-  // User Routes
+  // Test protected route
+  authRoutes.get('/protected', requireAuth, AuthenticationController.authSuccess,
+    AuthenticationController.authFail);
+
+  // /////////////////// User Routes \\\\\\\\\\\\\\\\\\\\\
 
   // Set user routes as a subgroup/middleware to apiRoutes
   apiRoutes.use('/user', userRoutes);
 
   // View user profile route
-  userRoutes.get('/:userId', requireAuth); // ,UserController.viewProfile);
-
-  // Test protected route
-  apiRoutes.get('/protected', requireAuth, (req, res) => {
-    res.send({ content: 'The protected test route is functional!' });
-  });
+  userRoutes.get('/:userId', requireAuth, UserController.viewProfile);
 
   // Set url for API group routes
   app.use('/api', apiRoutes);

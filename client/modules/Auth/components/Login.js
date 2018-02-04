@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import { FormGroup, FormControl, Button,
   ControlLabel, Row, Col } from 'react-bootstrap';
 
@@ -56,6 +57,7 @@ export default class Login extends Component {
           </Row>
         </FormGroup>
         <Button type="submit">Login</Button>
+        <Link to="/Register">Sign Up</Link>
       </form>
     );
   }
