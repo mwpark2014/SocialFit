@@ -5,12 +5,6 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
-// Authentication / Authorization packages
-import passport from 'passport';
-import { Strategy, ExtractJwt } from 'passport-jwt';
-import LocalStrategy from 'passport-local';
-import User from './models/user';
-
 // Webpack Requirements
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
@@ -41,7 +35,7 @@ import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import auth from './routes/auth.routes';
 import dummyData from './dummyData';
-import serverConfig from './config';
+import serverConfig from './config/config';
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -109,43 +103,6 @@ const renderError = err => {
     `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
   return renderFullPage(`Server Error${errTrace}`, {});
 };
-
-// Setting up local login strategy
-const localLogin = new LocalStrategy((username, password, done) => {
-  User.findOne({ username }, (userErr, user) => {
-    if (userErr) { return done(userErr); }
-    if (!user) { return done(null, false, { error: 'Your login details could not be verified. Please try again.' }); }
-
-    return user.comparePassword(password, (passErr, isMatch) => {
-      if (passErr) { return done(passErr); }
-      if (!isMatch) { return done(null, false, { error: 'Your login details could not be verified. Please try again.' }); }
-
-      return done(null, user);
-    });
-  });
-});
-
-const jwtOptions = {
-  // Telling Passport to check authorization headers for JWT
-  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
-  // Telling Passport where to find the secret
-  secretOrKey: serverConfig.secret,
-};
-
-// Setting up JWT login strategy
-const jwtLogin = new Strategy(jwtOptions, (payload, done) => {
-  User.findById(payload._id, (err, user) => {
-    if (err) return done(err, false);
-
-    if (user) return done(null, user);
-
-    return done(null, false);
-  });
-});
-
-// Allow passport to use strategies
-passport.use(jwtLogin);
-passport.use(localLogin);
 
 // Add routing for authentication
 auth(app);

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
-import config from '../config';
+import config from '../config/config';
 import setUserInfo from '../util/helpers';
 
 function generateToken(user) {
@@ -9,8 +9,8 @@ function generateToken(user) {
   });
 }
 
-export function loginSucess(req, res, next) {
-  const userInfo = setUserInfo(req);
+export function loginSuccess(req, res, next) {
+  const userInfo = setUserInfo(req.user);
 
   res.status(200).json({
     token: `JWT ${generateToken(userInfo)}`,
@@ -19,6 +19,18 @@ export function loginSucess(req, res, next) {
 }
 
 export function loginFail(err, req, res, next) {
+  res.status(401).json({
+    error: err.message,
+  });
+}
+
+export function authSuccess(req, res, next) {
+  res.status(200).json({
+    content: 'The protected test route is functional!',
+  });
+}
+
+export function authFail(err, req, res, next) {
   res.status(401).json({
     error: err.message,
   });

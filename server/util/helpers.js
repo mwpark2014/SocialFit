@@ -1,5 +1,5 @@
 // Set user info from request
-exports.setUserInfo = function setUserInfo(request) {
+export default function setUserInfo(request) {
   const getUserInfo = {
     _id: request._id,
     name: request.name,
@@ -8,4 +8,5 @@ exports.setUserInfo = function setUserInfo(request) {
   };
 
   return getUserInfo;
-};
+}
+

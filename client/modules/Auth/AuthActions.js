@@ -10,6 +10,7 @@ export const RESET_PASSWORD_REQUEST = 'reset_password_request';
 export const PROTECTED_TEST = 'protected_test';
 
 export function errorHandler(dispatch, error, type) {
+  console.log(error);
   let errorMessage = '';
   if (error.error) errorMessage = error.error;
 
@@ -97,13 +98,15 @@ export function resetPassword(token, { password }) {
 
 export function protectedTest() {
   return (dispatch) => {
-    callApi('auth/protected', 'get', { /* body */ },
-     { 'content-type': 'application/json', Authorization: cookie.load('token'),
-    })
+    console.log(cookie.load('token'));
+    callApi('auth/protected', 'get', undefined,
+      { 'content-type': 'application/json',
+          Authorization: cookie.load('token'),
+      })
     .then(response => {
       dispatch({
         type: PROTECTED_TEST,
-        payload: response.data.content,
+        payload: response.content,
       });
     })
     .catch((error) => {

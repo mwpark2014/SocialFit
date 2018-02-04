@@ -151,7 +151,7 @@
       "client/routes.js",
       "server/util/setup-test-env.js",
       "server/util/test-helpers.js",
-      "server/config.js",
+      "server/config/config.js",
       "server/dummyData.js"
     ],
     "reporter": [
