@@ -1,0 +1,6 @@
+.welcomeContainer { 
+  margin: 0 auto;
+  background-size: 500px auto;
+  background: url('../../../assets/welcome-bg_1280x583.jpeg') no-repeat fixed center;
+  min-height: 1280px;
+}

@@ -1,23 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
 
 // Import Style
 import styles from './Header.css';
 
-export function Header(props, context) {
+export function Header(props) {
   return (
     <div className={styles.header}>
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" ><h1>SocialFit</h1></Link>
         </h1>
-        {
-          context.router.isActive('/posts', true)
-            ? <a className={styles['add-post-button']} href="#" onClick={props.toggleAddPost}><FormattedMessage id="addPost" /></a>
-            : null
-        }
       </div>
     </div>
   );

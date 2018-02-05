@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Login from '../components/Login';
 
 // Import Style
-// import styles from '../../components/Auth/PostListItem.css';
+import styles from './welcomepage.css';
 
 // Import Actions
 import { loginUser } from '../AuthActions';
@@ -14,8 +14,10 @@ import { loginUser } from '../AuthActions';
 
 export function LoginPage(props) {
   return (
-    <Login errorMessage={props.errorMessage} message={props.message} //eslint-disable-line
-      loginUser={props.loginUser} />
+    <div className={styles.welcomeContainer}>
+      <Login errorMessage={props.errorMessage} message={props.message} //eslint-disable-line
+        loginUser={props.loginUser} />
+    </div>
   );
 }
 

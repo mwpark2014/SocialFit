@@ -63,3 +63,6 @@ typings/
 
 # Config file
 config.js
+
+# Font files not used 
+*.ttf

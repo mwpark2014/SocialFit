@@ -1,12 +1,14 @@
 .footer{
   text-align: center;
-  padding: 56px 0;
-  background-size: cover;
+  padding: 12px 0;
+  background-color: #1F0A00;
 }
 
 .footer p{
   margin: 0 0 8px 0;
   font-size: 14px;
+  color: #ffffff;
+  font-family: Georgia,Serif;
 }
 
 .footer a{
