@@ -12,22 +12,34 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
-import { switchLanguage } from '../../modules/Intl/IntlActions';
+import { activateLoginButton, deactivateLoginButton } from './AppActions';
+
+// Import Selector
+import { getLoginButton } from './AppReducer';
 
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = { isMounted: false };
+
+    this.activateLoginButton = this.activateLoginButton.bind(this);
+    this.deactivateLoginButton = this.deactivateLoginButton.bind(this);
   }
 
   componentDidMount() {
     this.setState({isMounted: true}); // eslint-disable-line
   }
 
-  toggleAddPostSection = () => {
-    this.props.dispatch(toggleAddPost());
+  activateLoginButton = () => {
+    
+    console.log("nonono");
+    this.props.dispatch(activateLoginButton());
   };
+
+  deactivateLoginButton = () => {
+    console.log("???");
+    this.props.dispatch(deactivateLoginButton());
+  }
 
   render() {
     return (
@@ -50,9 +62,9 @@ export class App extends Component {
             ]}
           />
           <Header
-            switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
-            intl={this.props.intl}
-            toggleAddPost={this.toggleAddPostSection}
+            authenticated={this.props.authenticated} history={this.props.history}
+            activateLoginButton={this.activateLoginButton} loginButton={this.props.loginButton}
+            deactivateLoginButton={this.deactivateLoginButton}
           />
           <div className={styles.container}>
             {this.props.children}
@@ -65,15 +77,18 @@ export class App extends Component {
 }
 
 App.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  loginButton: PropTypes.bool.isRequired,
 };
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
   return {
-    intl: store.intl,
+    authenticated: store.auth.authenticated,
+    loginButton: getLoginButton(store),
   };
 }
 

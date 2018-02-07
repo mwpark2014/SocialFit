@@ -30,15 +30,15 @@ export default (
     <IndexRoute
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Auth/pages/LoginPage').default);
+          cb(null, require('./modules/Auth/pages/RegisterPage').default);
         });
       }}
     />
     <Route
-      path="/register"
+      path="/login"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Auth/pages/RegisterPage').default);
+          cb(null, require('./modules/Auth/pages/LoginPage').default);
         });
       }}
     />

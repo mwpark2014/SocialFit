@@ -8,12 +8,12 @@ import { Row, Col } from 'react-bootstrap';
 import styles from './welcomepage.css';
 
 // Import Actions
-import { registerUser } from '../AuthActions';
+import { registerUser, loginUser } from '../AuthActions';
 
 // Import Selectors
 // import { getPost } from '../../PostReducer';
 
-export function RegisterPage(props) {
+export function WelcomePage(props) {
   return (
     <div className={styles.welcomeContainer}>
       <Row>
@@ -33,13 +33,16 @@ function mapStateToProps(state) {
   return {
     errorMessage: state.auth.error,
     message: state.auth.message,
+    authenticated: state.auth.authenticated,
   };
 }
 
-RegisterPage.propTypes = {
+WelcomePage.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  authenticated: PropTypes.auth.authenticated,
   registerUser: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, { registerUser })(RegisterPage);
+export default connect(mapStateToProps, { registerUser, loginUser })(WelcomePage);

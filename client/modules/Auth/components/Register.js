@@ -38,10 +38,10 @@ export default class Register extends Component {
       <form onSubmit={this.handleSubmit}>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Name</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
               <FormControl type="text" name="name" placeholder="Name" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.name} required />
             </Col>
@@ -49,10 +49,10 @@ export default class Register extends Component {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Username</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
               <FormControl type="text" name="username" placeholder="Username" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.username} required />
             </Col>
@@ -60,10 +60,10 @@ export default class Register extends Component {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Email</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
               <FormControl type="email" name="email" placeholder="Email" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.email} required />
             </Col>
@@ -71,10 +71,10 @@ export default class Register extends Component {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Password</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
               <FormControl type="password" name="password" placeholder="Password" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.password} required />
             </Col>
@@ -82,10 +82,10 @@ export default class Register extends Component {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Confirm Password</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
               <FormControl type="password" name="password2" placeholder="Password" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.password2} required />
             </Col>
@@ -93,7 +93,7 @@ export default class Register extends Component {
         </FormGroup>
         <Button type="submit">Register</Button>
         <br />
-        Have you already registered? <Link to="/">Sign in</Link>
+        Have you already registered? <Link to="/login">Sign in</Link>
       </form>
     );
   }
