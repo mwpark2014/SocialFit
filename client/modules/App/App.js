@@ -24,6 +24,7 @@ export class App extends Component {
 
     this.activateLoginButton = this.activateLoginButton.bind(this);
     this.deactivateLoginButton = this.deactivateLoginButton.bind(this);
+    this.redirectToWelcomePage = this.redirectToWelcomePage.bind(this);
   }
 
   componentDidMount() {
@@ -31,14 +32,15 @@ export class App extends Component {
   }
 
   activateLoginButton = () => {
-    
-    console.log("nonono");
     this.props.dispatch(activateLoginButton());
   };
 
   deactivateLoginButton = () => {
-    console.log("???");
     this.props.dispatch(deactivateLoginButton());
+  }
+
+  redirectToWelcomePage = () => {
+    this.props.history.push('/');
   }
 
   render() {
@@ -62,9 +64,10 @@ export class App extends Component {
             ]}
           />
           <Header
-            authenticated={this.props.authenticated} history={this.props.history}
-            activateLoginButton={this.activateLoginButton} loginButton={this.props.loginButton}
+            authenticated={this.props.authenticated} loginButton={this.props.loginButton}
+            activateLoginButton={this.activateLoginButton}
             deactivateLoginButton={this.deactivateLoginButton}
+            redirectToWelcomePage={this.redirectToWelcomePage}
           />
           <div className={styles.container}>
             {this.props.children}

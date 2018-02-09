@@ -7,7 +7,6 @@ import { Button } from 'react-bootstrap';
 import styles from './Header.css';
 
 export function Header(props, context) {
-  console.log(props);
   let logButton = null;
   if (context.router.isActive('/', true)) {
     logButton = props.loginButton
@@ -15,8 +14,8 @@ export function Header(props, context) {
     : <Button href="#" className={styles.loginButton} onClick={props.activateLoginButton}> Register </Button>;
   } else {
     logButton = props.authenticated
-    ? <Button href="#" className={styles.loginButton} onclick={props.history.push('/')}> Log out </Button>
-    : <Button href="#" className={styles.loginButton} onClick={props.history.push('/')}> Sign in </Button>;
+    ? <Button href="#" className={styles.loginButton} onClick={props.redirectToWelcomePage}> Log out </Button>
+    : <Button href="#" className={styles.loginButton} onClick={props.redirectToWelcomePage}> Sign in </Button>;
   }
 
   return (
@@ -39,7 +38,7 @@ Header.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   activateLoginButton: PropTypes.func.isRequired,
   deactivateLoginButton: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
+  redirectToWelcomePage: PropTypes.func.isRequired,
   loginButton: PropTypes.bool.isRequired,
 };
 
