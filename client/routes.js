@@ -19,8 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
-  require('./modules/Auth/pages/LoginPage');
-  require('./modules/Auth/pages/RegisterPage');
+  require('./modules/Auth/pages/WelcomePage');
+  require('./modules/Dash/pages/DashboardPage');
 }
 
 // react-router setup with code-splitting
@@ -42,21 +42,13 @@ export default (
         });
       }}
     />
-    <Route
-      path="/posts"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
-        });
-      }}
-    />
-    <Route
+    {/* <Route
       path="/posts/:slug-:cuid"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
         });
       }}
-    />
+    /> */}
   </Route>
 );
