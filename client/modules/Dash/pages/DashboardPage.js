@@ -10,9 +10,10 @@ import DashPostBox from '../components/DashPostBox';
 
 // Import Actions
 import { protectedTest } from '../../Auth/AuthActions';
+import { fetchPosts, deletePostRequest } from '../DashActions';
 
 // Import Selectors
-// import { getPost } from '../../AuthReducer';
+import { getPosts } from '../DashReducer';
 
 export class DashboardPage extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ export class DashboardPage extends Component {
 
     this.props.protectedTest(this.props.history);
   }
+
 
   render() {
     return (

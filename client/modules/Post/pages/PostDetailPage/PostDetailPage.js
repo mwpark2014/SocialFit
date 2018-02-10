@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
 // Import Style
-import styles from '../../components/PostListItem/PostListItem.css';
+// import styles from '../../components/PostListItem/PostListItem.css';
 
 // Import Actions
 import { fetchPost } from '../../PostActions';

@@ -1,26 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 // Import styles
 import styles from './DashPostBox.css';
 
-export function DashPostBox(props) {
-  // handleCommentSubmit(comment) {
-  //     let comments = this.state.data;
-  //     comment.id = Date.now();
-  //     let newComments = comments.concat([comment]);
-  //     this.setState({ data: newComments })
-  //     axios.post(this.props.url, comment)
-  //         .catch(err => {
-  //             console.error(err);
-  //             this.setState({ data: comments })
-  //         });
-  // }
-  return (
-    <div>
-      <textarea className={styles.postBox} rows="1" placeholder="Post something on your wall!" required></textarea>
-      <Button>Post</Button>
-    </div>
-  );
+// Actions
+import { addPostRequest } from '../DashActions';
+
+export class DashPostBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { content: '' };
+    this.handlePostSubmit = this.handlePostSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  
+  handlePostSubmit = () => {
+    this.props.addPostRequest({ author: 'Mason', content: this.state.content });
+  }
+
+  handleInputChange(event) {
+    this.setState({
+      content: event.target.value,
+    });
+  }
+
+  render() {
+    return (
+      <div className={styles.container}>
+        <textarea
+          className={styles.postBox} onChange={this.handleInputChange} value={this.state.content}
+          placeholder="Post something on your wall!" required
+        />
+        <Button className={styles.postButton} onClick={this.handlePostSubmit}>Post</Button>
+      </div>
+    );
+  }
 }
-export default DashPostBox;
+
+DashPostBox.propTypes = {
+  handlePostSubmit: PropTypes.func.isRequired,
+  addPostRequest: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addPostRequest })(DashPostBox);
