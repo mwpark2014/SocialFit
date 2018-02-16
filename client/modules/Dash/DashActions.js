@@ -20,7 +20,7 @@ export function addPostRequest(post) {
         author: post.author,
         content: post.content,
       },
-    }).then(res => dispatch(addPost(res.post))).catch(err => console.log(err));
+    }).then(res => dispatch(addPost(res.post)));
   };
 }
 
