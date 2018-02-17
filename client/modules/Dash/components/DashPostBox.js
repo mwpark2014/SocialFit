@@ -30,7 +30,7 @@ export class DashPostBox extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.clearfix}`}>
         <textarea
           className={styles.postBox} onChange={this.handleInputChange} value={this.state.content}
           placeholder="Post something on your wall!" required
@@ -42,7 +42,6 @@ export class DashPostBox extends Component {
 }
 
 DashPostBox.propTypes = {
-  handlePostSubmit: PropTypes.func.isRequired,
   addPostRequest: PropTypes.func.isRequired,
 };
 

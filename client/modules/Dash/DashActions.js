@@ -15,7 +15,6 @@ export function addPost(post) {
 
 export function addPostRequest(post) {
   return (dispatch) => {
-    console.log("I'm in");
     return callApi('posts', 'post', {
       post: {
         author: post.author,

@@ -7,10 +7,13 @@
   height: 76px;
   display: block;
 }
+
 .postButton {
   float:right;
 }
 
-.postButton:after {
-  clear:both;
+.clearfix::after {
+  clear: both;
+  display: block;
+  content:"";
 }

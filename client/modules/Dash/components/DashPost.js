@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export function DashPost(props) {
   return (
     <div>
-        Placeholder for a post
+        {props.post.content} by {props.post.author}
     </div>
   );
 }
+
+DashPost.propTypes = {
+  post: PropTypes.object.isRequired,
+};
+
 export default DashPost;
