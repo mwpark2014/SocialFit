@@ -1,16 +1,20 @@
 // Import Actions
-import { TOGGLE_ADD_POST } from './AppActions';
+import { ACTIVATE_LOGIN_BUTTON, DEACTIVATE_LOGIN_BUTTON } from './AppActions';
 
 // Initial State
 const initialState = {
-  showAddPost: false,
+  loginButton: true,
 };
 
 const AppReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_ADD_POST:
+    case ACTIVATE_LOGIN_BUTTON:
       return {
-        showAddPost: !state.showAddPost,
+        loginButton: true,
+      };
+    case DEACTIVATE_LOGIN_BUTTON:
+      return {
+        loginButton: false,
       };
 
     default:
@@ -20,8 +24,8 @@ const AppReducer = (state = initialState, action) => {
 
 /* Selectors */
 
-// Get showAddPost
-export const getShowAddPost = state => state.app.showAddPost;
+// Get loginButton
+export const getLoginButton = state => state.app.loginButton;
 
 // Export Reducer
 export default AppReducer;

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
 // Import Style
-import styles from './PostListItem.css';
+// import styles from './PostListItem.css';
 
 function PostListItem(props) {
   return (

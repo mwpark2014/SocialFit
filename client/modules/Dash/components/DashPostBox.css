@@ -1,0 +1,19 @@
+.container { 
+  width: 60%;
+  margin: 20px auto;
+}
+.postBox {
+  width: 100%;
+  height: 76px;
+  display: block;
+}
+
+.postButton {
+  float:right;
+}
+
+.clearfix::after {
+  clear: both;
+  display: block;
+  content:"";
+}

@@ -5,15 +5,14 @@ import { combineReducers } from 'redux';
 
 // Import Reducers
 import app from './modules/App/AppReducer';
-import posts from './modules/Post/PostReducer';
+import dash from './modules/Dash/DashReducer';
 import intl from './modules/Intl/IntlReducer';
-//import dash from './modules/Dash/DashReducer';
 import auth from './modules/Auth/AuthReducer';
 
 // Combine all reducers into one root reducer
 export default combineReducers({
   app,
-  posts,
+  dash,
   intl,
   auth,
 });

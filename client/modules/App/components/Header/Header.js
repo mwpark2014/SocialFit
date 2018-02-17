@@ -1,33 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { Button } from 'react-bootstrap';
 
 // Import Style
 import styles from './Header.css';
 
 export function Header(props, context) {
-  const languageNodes = props.intl.enabledLanguages.map(
-    lang => <li key={lang} onClick={() => props.switchLanguage(lang)} className={lang === props.intl.locale ? styles.selected : ''}>{lang}</li>
-  );
+  let logButton = null;
+  if (context.router.isActive('/', true)) {
+    logButton = props.loginButton
+    ? <Button href="#" className={styles.loginButton} onClick={props.deactivateLoginButton}> Sign in </Button>
+    : <Button href="#" className={styles.loginButton} onClick={props.activateLoginButton}> Register </Button>;
+  } else {
+    logButton = props.authenticated
+    ? <Button href="#" className={styles.loginButton} onClick={props.redirectToWelcomePage}> Log out </Button>
+    : <Button href="#" className={styles.loginButton} onClick={props.redirectToWelcomePage}> Sign in </Button>;
+  }
 
   return (
     <div className={styles.header}>
-      <div className={styles['language-switcher']}>
-        <ul>
-          <li><FormattedMessage id="switchLanguage" /></li>
-          {languageNodes}
-        </ul>
-      </div>
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" ><h1>SocialFit</h1></Link>
         </h1>
-        {
-          context.router.isActive('/posts', true)
-            ? <a className={styles['add-post-button']} href="#" onClick={props.toggleAddPost}><FormattedMessage id="addPost" /></a>
-            : null
-        }
+        {logButton}
       </div>
     </div>
   );
@@ -38,9 +35,11 @@ Header.contextTypes = {
 };
 
 Header.propTypes = {
-  toggleAddPost: PropTypes.func.isRequired,
-  switchLanguage: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+  activateLoginButton: PropTypes.func.isRequired,
+  deactivateLoginButton: PropTypes.func.isRequired,
+  redirectToWelcomePage: PropTypes.func.isRequired,
+  loginButton: PropTypes.bool.isRequired,
 };
 
 export default Header;

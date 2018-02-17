@@ -1,0 +1,14 @@
+.welcomeContainer { 
+  margin: 0 auto;
+  background-size: 500px auto;
+  background: url('../../../assets/welcome-bg_1280x583.jpeg') no-repeat fixed center;
+  height: 100%;
+}
+
+.authContainer {
+  margin: 50px 30px; 
+  padding: 15px; 
+  border: 1px solid #808080;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}

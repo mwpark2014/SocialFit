@@ -1,0 +1,48 @@
+import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+// Import styles
+import styles from './DashPostBox.css';
+
+// Actions
+import { addPostRequest } from '../DashActions';
+
+export class DashPostBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { content: '' };
+    this.handlePostSubmit = this.handlePostSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  
+  handlePostSubmit = () => {
+    this.props.addPostRequest({ author: 'Mason', content: this.state.content });
+  }
+
+  handleInputChange(event) {
+    this.setState({
+      content: event.target.value,
+    });
+  }
+
+  render() {
+    return (
+      <div className={`${styles.container} ${styles.clearfix}`}>
+        <textarea
+          className={styles.postBox} onChange={this.handleInputChange} value={this.state.content}
+          placeholder="Post something on your wall!" required
+        />
+        <Button className={styles.postButton} onClick={this.handlePostSubmit}>Post</Button>
+      </div>
+    );
+  }
+}
+
+DashPostBox.propTypes = {
+  addPostRequest: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addPostRequest })(DashPostBox);

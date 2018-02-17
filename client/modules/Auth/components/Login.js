@@ -36,10 +36,10 @@ export default class Login extends Component {
       <form onSubmit={this.handleSubmit}>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Username</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
             <FormControl type="text" name="username" placeholder="Username" // eslint-disable-line
               onChange={this.handleInputChange} value={this.state.username} required />
             </Col>
@@ -47,10 +47,10 @@ export default class Login extends Component {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col md={2}>
+            <Col md={4}>
               <ControlLabel>Password</ControlLabel>
             </Col>
-            <Col md={4}>
+            <Col md={7}>
             <FormControl type="password" name="password" placeholder="Password" // eslint-disable-line
               onChange={this.handleInputChange} value={this.state.password} required />
             </Col>

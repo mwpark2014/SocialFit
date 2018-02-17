@@ -1,9 +1,17 @@
 // Export Constants
-export const TOGGLE_ADD_POST = 'TOGGLE_ADD_POST';
+export const ACTIVATE_LOGIN_BUTTON = 'ACTIVATE_LOGIN_BUTTON';
+export const DEACTIVATE_LOGIN_BUTTON = 'DEACTIVATE_LOGIN_BUTTON';
 
 // Export Actions
-export function toggleAddPost() {
+export function activateLoginButton() {
   return {
-    type: TOGGLE_ADD_POST,
+    type: ACTIVATE_LOGIN_BUTTON,
+  };
+}
+
+// Export Actions
+export function deactivateLoginButton() {
+  return {
+    type: DEACTIVATE_LOGIN_BUTTON,
   };
 }
