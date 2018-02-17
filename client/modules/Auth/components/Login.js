@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import { FormGroup, FormControl, Button,
-  ControlLabel, Row, Col } from 'react-bootstrap';
+import { FormGroup, Input, Button,
+  Label, Row, Col } from 'reactstrap';
 
 export default class Login extends Component {
   constructor(props) {
@@ -37,10 +36,10 @@ export default class Login extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Username</ControlLabel>
+              <Label>Username</Label>
             </Col>
             <Col md={7}>
-            <FormControl type="text" name="username" placeholder="Username" // eslint-disable-line
+            <Input type="text" name="username" placeholder="Username" // eslint-disable-line
               onChange={this.handleInputChange} value={this.state.username} required />
             </Col>
           </Row>
@@ -48,16 +47,19 @@ export default class Login extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Password</ControlLabel>
+              <Label>Password</Label>
             </Col>
             <Col md={7}>
-            <FormControl type="password" name="password" placeholder="Password" // eslint-disable-line
+            <Input type="password" name="password" placeholder="Password" // eslint-disable-line
               onChange={this.handleInputChange} value={this.state.password} required />
             </Col>
           </Row>
         </FormGroup>
-        <Button type="submit">Login</Button>
-        <Link to="/Register">Sign Up</Link>
+        <Row>
+          <Col md={{ size: 7, offset: 4 }}>
+            <Button type="submit" block>Login</Button>
+          </Col>
+        </Row>
       </form>
     );
   }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import { FormGroup, FormControl, Button,
-  ControlLabel, Row, Col } from 'react-bootstrap';
+import { FormGroup, Input, Button,
+  Label, Row, Col } from 'reactstrap';
 
 export default class Register extends Component {
   constructor(props) {
@@ -39,10 +38,10 @@ export default class Register extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Name</ControlLabel>
+              <Label>Name</Label>
             </Col>
             <Col md={7}>
-              <FormControl type="text" name="name" placeholder="Name" // eslint-disable-line
+              <Input type="text" name="name" placeholder="Name" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.name} required />
             </Col>
           </Row>
@@ -50,10 +49,10 @@ export default class Register extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Username</ControlLabel>
+              <Label>Username</Label>
             </Col>
             <Col md={7}>
-              <FormControl type="text" name="username" placeholder="Username" // eslint-disable-line
+              <Input type="text" name="username" placeholder="Username" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.username} required />
             </Col>
           </Row>
@@ -61,10 +60,10 @@ export default class Register extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Email</ControlLabel>
+              <Label>Email</Label>
             </Col>
             <Col md={7}>
-              <FormControl type="email" name="email" placeholder="Email" // eslint-disable-line
+              <Input type="email" name="email" placeholder="Email" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.email} required />
             </Col>
           </Row>
@@ -72,10 +71,10 @@ export default class Register extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Password</ControlLabel>
+              <Label>Password</Label>
             </Col>
             <Col md={7}>
-              <FormControl type="password" name="password" placeholder="Password" // eslint-disable-line
+              <Input type="password" name="password" placeholder="Password" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.password} required />
             </Col>
           </Row>
@@ -83,17 +82,19 @@ export default class Register extends Component {
         <FormGroup>
           <Row>
             <Col md={4}>
-              <ControlLabel>Confirm Password</ControlLabel>
+              <Label>Confirm Password</Label>
             </Col>
             <Col md={7}>
-              <FormControl type="password" name="password2" placeholder="Password" // eslint-disable-line
+              <Input type="password" name="password2" placeholder="Password" // eslint-disable-line
                 onChange={this.handleInputChange} value={this.state.password2} required />
             </Col>
           </Row>
         </FormGroup>
-        <Button type="submit">Register</Button>
-        <br />
-        Have you already registered? <Link to="/login">Sign in</Link>
+        <Row>
+          <Col md={{ size: 7, offset: 4 }}>
+            <Button type="submit" block>Register</Button>
+          </Col>
+        </Row>
       </form>
     );
   }
