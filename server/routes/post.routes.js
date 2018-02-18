@@ -8,6 +8,9 @@ router.route('/posts').get(PostController.getPosts);
 // Get one post by cuid
 router.route('/posts/:cuid').get(PostController.getPost);
 
+// Get posts filtered by target user
+router.route('/posts/users/:target').get(PostController.getPostsByTargetUser);
+
 // Add a new Post
 router.route('/posts').post(PostController.addPost);
 

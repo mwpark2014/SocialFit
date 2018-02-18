@@ -18,6 +18,21 @@ export function getPosts(req, res) {
 }
 
 /**
+ * Get posts filtered by target user
+ * @param req
+ * @param res
+ * @returns void
+ */
+export function getPostsByTargetUser(req, res) {
+  Post.find({ target: req.params.target }).sort('-dateAdded').exec((err, posts) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ posts });
+  });
+}
+
+/**
  * Save a post
  * @param req
  * @param res

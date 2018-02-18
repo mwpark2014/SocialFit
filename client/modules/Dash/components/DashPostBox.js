@@ -19,7 +19,10 @@ export class DashPostBox extends Component {
   }
   
   handlePostSubmit = () => {
-    this.props.addPostRequest({ author: 'Mason', content: this.state.content });
+    this.props.addPostRequest({ author: this.props.author,
+        content: this.state.content,
+        target: this.props.target,
+      });
   }
 
   handleInputChange(event) {
@@ -43,6 +46,8 @@ export class DashPostBox extends Component {
 
 DashPostBox.propTypes = {
   addPostRequest: PropTypes.func.isRequired,
+  author: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired,
 };
 
 export default connect(null, { addPostRequest })(DashPostBox);
