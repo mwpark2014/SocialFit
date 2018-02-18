@@ -13,7 +13,7 @@ Core Concepts
 * Constructing app isomorphically so that server can render React components itself if a user manually types in a page URL
 * Use Passport.js to implement local authentication strategy and JSON Web Tokens to persist sessions
 * When registering, users are validated server-side and stored; passwords encrypted with bcrypt package
-* Create, read, update, and delete MongoDB documents corresponding to posts
+* Connects to MongoDB database to create, read, update, and delete MongoDB documents corresponding to posts and comments
 * Use Redux architecture to keep application-wide state that can be read and updated through action-creators / reducers
 * Uses ES6 features, transpiled by Babel
 * Bundled by webpack with loaders such as babel, style-loader, postcss-loader, url-loader, json-loader
@@ -35,7 +35,8 @@ Major TODOS
 
 To run this, a MongoDB database must be created, then a /server/config/config.js file must be created to export config settings:
 
-```const config = {
+```
+const config = {
   // Database connection information
   mongoURL: 'your_mongo_url',
   // Setting port for server
