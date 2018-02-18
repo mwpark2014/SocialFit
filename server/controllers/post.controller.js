@@ -39,7 +39,7 @@ export function getPostsByTargetUser(req, res) {
  * @returns void
  */
 export function addPost(req, res) {
-  if (!req.body.post.author || !req.body.post.content) {
+  if (!req.body.post.author || !req.body.post.content || !req.body.post.target) {
     res.status(403).end();
   }
 
