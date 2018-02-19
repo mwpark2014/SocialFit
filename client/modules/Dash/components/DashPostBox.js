@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import styles from './DashPostBox.css';
 
 // Actions
-import { addPostRequest } from '../DashActions';
+import { addPostRequest } from '../../Post/PostActions';
 
 export class DashPostBox extends Component {
   constructor(props) {

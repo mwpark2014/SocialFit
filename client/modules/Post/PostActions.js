@@ -17,11 +17,12 @@ export function addPostRequest(post) {
   return (dispatch) => {
     return callApi('posts', 'post', {
       post: {
-        name: post.name,
-        title: post.title,
+        author: post.author,
         content: post.content,
+        target: post.target,
       },
-    }).then(res => dispatch(addPost(res.post)));
+    }).then(res => dispatch(addPost(res.post)))
+    .catch(err => console.log(err));
   };
 }
 
@@ -46,6 +47,12 @@ export function fetchPost(cuid) {
   };
 }
 
+export function fetchPostByTargetUser(target) {
+  return (dispatch) => {
+    return callApi(`posts/users/${target}`).then(res => dispatch(addPost(res.post)));
+  };
+}
+
 export function deletePost(cuid) {
   return {
     type: DELETE_POST,
@@ -58,3 +65,17 @@ export function deletePostRequest(cuid) {
     return callApi(`posts/${cuid}`, 'delete').then(() => dispatch(deletePost(cuid)));
   };
 }
+
+// export function errorHandler(dispatch, error, type) {
+//   if (error.response.status === 401) {
+//     dispatch({
+//       type,
+//       payload: 'You are not authorized to do this. Please login and try again.',
+//     });
+//   } else {
+//     dispatch({
+//       type,
+//       payload: errorMessage,
+//     });
+//   }
+// }

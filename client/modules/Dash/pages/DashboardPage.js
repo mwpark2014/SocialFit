@@ -9,10 +9,10 @@ import DashPostBox from '../components/DashPostBox';
 import styles from './DashboardPage.css';
 
 // Import Actions
-import { fetchPosts, deletePostRequest } from '../DashActions';
+import { fetchPosts, deletePostRequest } from '../../Post/PostActions';
 
 // Import Selectors
-import { getPosts } from '../DashReducer';
+import { getPosts } from '../../Post/PostReducer';
 
 export class DashboardPage extends Component {
   constructor(props) {
@@ -58,7 +58,6 @@ function mapStateToProps(state) {
 DashboardPage.propTypes = {
   content: PropTypes.string.isRequired,
   fetchPosts: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
   username: PropTypes.string.isRequired,
   params: PropTypes.object.isRequired,

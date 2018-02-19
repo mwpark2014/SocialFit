@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DashPost from './DashPost';
+import FeedPost from './FeedPost';
 import PropTypes from 'prop-types';
 
 // Import style
@@ -13,8 +13,8 @@ export class DashPostList extends Component {
     return (
       <div>
         {
-          this.props.data.filter(post => post.target === this.props.target).map(post => (
-            <DashPost
+          this.props.data.map(post => (
+            <FeedPost
               post={post}
               key={post.cuid}
             />
@@ -28,7 +28,6 @@ export class DashPostList extends Component {
 DashPostList.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
-  target: PropTypes.string.isRequired,
 };
 
 export default DashPostList;

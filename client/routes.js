@@ -17,10 +17,9 @@ if (typeof require.ensure !== 'function') {
  */
 if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
-  require('./modules/Post/pages/PostListPage/PostListPage');
-  require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Auth/pages/WelcomePage');
   require('./modules/Dash/pages/DashboardPage');
+  require('./modules/Feed/pages/NewsFeedPage');
 }
 
 // react-router setup with code-splitting
@@ -46,7 +45,15 @@ export default (
       path="/users/:username"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, ReqAuth(require('./modules/Dash/pages/DashboardPage').default));
+          cb(null, ReqAuth(require('./modules/Dash/pages/DashboardPage').default)); // eslint-disable-line new-cap
+        });
+      }}
+    />
+    <Route
+      path="/feed"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, ReqAuth(require('./modules/Feed/pages/NewsFeedPage').default)); // eslint-disable-line new-cap
         });
       }}
     />
