@@ -29,7 +29,7 @@ export default class Register extends Component {
                    email: this.state.email,
                    password: this.state.password });    
     // Clear all the fields
-    this.state = { name: '', username: '', email: '', password: '', password2: '' };
+    this.setState({ name: '', username: '', email: '', password: '', password2: '' });
   }
 
   render() {

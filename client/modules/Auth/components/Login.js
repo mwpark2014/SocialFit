@@ -27,7 +27,7 @@ export default class Login extends Component {
     this.props.loginUser({ username: this.state.username,
                    password: this.state.password });
     // Clear all the fields
-    this.state = { name: '', username: '', email: '', password: '', password2: '' };
+    this.setState({ name: '', username: '', email: '', password: '', password2: '' });
   }
 
   render() {
