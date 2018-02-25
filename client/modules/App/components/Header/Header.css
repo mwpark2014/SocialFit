@@ -16,18 +16,12 @@
   }
 }
 
-.site-title {
+a.site-title.site-title{
   font-weight: 500;
   font-size: 34px;
   color: rgba(0, 0, 0, 0.6);
-}
-
-.site-title a {
-  text-decoration:none;
-}
-
-.site-title a:hover {
-  text-decoration:none;
+  padding-top:0px;
+  padding-bottom:0px;
 }
 
 .loginButton {
