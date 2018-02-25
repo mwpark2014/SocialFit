@@ -11,20 +11,23 @@
 
 @media (min-width: 768px) {
   .nav {
-    composes: navbar-expand-md from 'bootstrap/dist/css/bootstrap.min.css';
-    composes: navbar-nav from 'bootstrap/dist/css/bootstrap.min.css';
-    composes: nav-link from 'bootstrap/dist/css/bootstrap.min.css';
     padding-right: 2rem;
     padding-left: 2rem;
   }
 }
 
 .site-title {
-  composes: navbar-light from 'bootstrap/dist/css/bootstrap.min.css';
-  composes: navbar-brand from 'bootstrap/dist/css/bootstrap.min.css';
   font-weight: 500;
   font-size: 34px;
   color: rgba(0, 0, 0, 0.6);
+}
+
+.site-title a {
+  text-decoration:none;
+}
+
+.site-title a:hover {
+  text-decoration:none;
 }
 
 .loginButton {
