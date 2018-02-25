@@ -9,27 +9,32 @@
   overflow: auto;
 }
 
+@media (min-width: 768px) {
+  .nav {
+    composes: navbar-expand-md from 'bootstrap/dist/css/bootstrap.min.css';
+    composes: navbar-nav from 'bootstrap/dist/css/bootstrap.min.css';
+    composes: nav-link from 'bootstrap/dist/css/bootstrap.min.css';
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+
 .site-title {
-  font-weight: 300;
-  font-size: 42px;
-  float: left;
-  margin:0;
-}
-
-.site-title a {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.596);
-}
-
-.site-title a:hover {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.596);
+  composes: navbar-light from 'bootstrap/dist/css/bootstrap.min.css';
+  composes: navbar-brand from 'bootstrap/dist/css/bootstrap.min.css';
+  font-weight: 500;
+  font-size: 34px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .loginButton {
-  padding: 8px 16px;
-  margin:10px 20px;
-  float: right;
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  :global .navbar-expand-md .navbar-nav .nav-link {
+    padding-right:2rem;
+  }
 }
 
 @media (max-width: 767px){
@@ -37,4 +42,10 @@
     float: left;
     margin-top: 16px;
   }
+}
+
+.clearfix::after {
+  clear: both;
+  display: block;
+  content:"";
 }
