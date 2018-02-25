@@ -27,7 +27,7 @@ export default class Register extends Component {
     this.props.registerUser({ username: this.state.username,
                    name: this.state.name,
                    email: this.state.email,
-                   password: this.state.password });    
+                   password: this.state.password });
     // Clear all the fields
     this.state = { name: '', username: '', email: '', password: '', password2: '' };
   }
@@ -41,8 +41,10 @@ export default class Register extends Component {
               <Label>Name</Label>
             </Col>
             <Col md={7}>
-              <Input type="text" name="name" placeholder="Name" // eslint-disable-line
-                onChange={this.handleInputChange} value={this.state.name} required />
+              <Input
+                type="text" name="name" placeholder="Name"
+                onChange={this.handleInputChange} value={this.state.name} required
+              />
             </Col>
           </Row>
         </FormGroup>
@@ -52,8 +54,10 @@ export default class Register extends Component {
               <Label>Username</Label>
             </Col>
             <Col md={7}>
-              <Input type="text" name="username" placeholder="Username" // eslint-disable-line
-                onChange={this.handleInputChange} value={this.state.username} required />
+              <Input
+                type="text" name="username" placeholder="Username"
+                onChange={this.handleInputChange} value={this.state.username} required
+              />
             </Col>
           </Row>
         </FormGroup>
@@ -63,8 +67,10 @@ export default class Register extends Component {
               <Label>Email</Label>
             </Col>
             <Col md={7}>
-              <Input type="email" name="email" placeholder="Email" // eslint-disable-line
-                onChange={this.handleInputChange} value={this.state.email} required />
+              <Input
+                type="email" name="email" placeholder="Email"
+                onChange={this.handleInputChange} value={this.state.email} required
+              />
             </Col>
           </Row>
         </FormGroup>
@@ -74,8 +80,10 @@ export default class Register extends Component {
               <Label>Password</Label>
             </Col>
             <Col md={7}>
-              <Input type="password" name="password" placeholder="Password" // eslint-disable-line
-                onChange={this.handleInputChange} value={this.state.password} required />
+              <Input
+                type="password" name="password" placeholder="Password"
+                onChange={this.handleInputChange} value={this.state.password} required
+              />
             </Col>
           </Row>
         </FormGroup>
@@ -85,8 +93,11 @@ export default class Register extends Component {
               <Label>Confirm Password</Label>
             </Col>
             <Col md={7}>
-              <Input type="password" name="password2" placeholder="Password" // eslint-disable-line
-                onChange={this.handleInputChange} value={this.state.password2} required />
+              <Input
+                type="password" name="password2" placeholder="Password"
+                onChange={this.handleInputChange}
+                value={this.state.password2} required
+              />
             </Col>
           </Row>
         </FormGroup>

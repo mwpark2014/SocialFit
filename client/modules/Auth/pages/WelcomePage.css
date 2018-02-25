@@ -5,14 +5,11 @@
   height: 100%;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1300px) {
   .welcomeContainer {
     background: url('../../../assets/welcome-bg_1920x1280.jpeg') no-repeat fixed center;
   }
 }
-
-
-
 
 .authContainer {
   margin: 50px 30px; 
