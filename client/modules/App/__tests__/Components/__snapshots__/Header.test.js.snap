@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header snapshot 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <nav
+      className="navbar navbar-expand-md navbar-light bg-faded"
+    >
+      <a
+        className="navbar-brand"
+        href="/"
+      >
+        SocialFit
+      </a>
+      <button
+        className="navbar-toggler"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="collapse navbar-collapse"
+        style={Object {}}
+      >
+        <ul
+          className="ml-auto navbar-nav"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/feed"
+              onClick={[Function]}
+            >
+              NEWSFEED
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="#"
+              onClick={[Function]}
+            >
+              PROFILE
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="btn btn-secondary"
+              href="#"
+              onClick={[Function]}
+              type={undefined}
+            >
+               Sign in 
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;

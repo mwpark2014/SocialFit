@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer snapshot 1`] = `
+<div
+  className={undefined}
+>
+  <p>
+    © 2018 · Mason Park
+  </p>
+</div>
+`;
+
+exports[`Link changes the class when hovered 1`] = `
+<div
+  className={undefined}
+>
+  <p>
+    © 2018 · Mason Park
+  </p>
+</div>
+`;
