@@ -3,15 +3,12 @@ import Header from '../../components/Header/Header';
 import renderer from 'react-test-renderer';
 
 const activateLoginButton = () => {
-  this.props.dispatch(activateLoginButton());
 };
 
 const deactivateLoginButton = () => {
-  this.props.dispatch(deactivateLoginButton());
 };
 
 const redirectToWelcomePage = () => {
-  this.props.history.push('/');
 };
 
 test('Header snapshot', () => {
