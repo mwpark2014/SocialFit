@@ -144,7 +144,8 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
-    }
+    },
+    "testRegex": "(\\.|/)(test)\\.jsx?$"
   },
   "nyc": {
     "include": [
