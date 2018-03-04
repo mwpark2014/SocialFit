@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header snapshot 1`] = `
+exports[`Test render & styles Header snapshot 1`] = `
 <div
-  className={undefined}
+  className="header"
 >
   <div
-    className={undefined}
+    className="content"
   >
     <nav
       className="navbar navbar-expand-md navbar-light bg-faded"
     >
       <a
-        className="navbar-brand"
+        className="site-title navbar-brand"
         href="/"
       >
         SocialFit
@@ -33,7 +33,7 @@ exports[`Header snapshot 1`] = `
           className="ml-auto navbar-nav"
         >
           <li
-            className="nav-item"
+            className="nav nav-item"
           >
             <a
               className="nav-link"
@@ -44,7 +44,7 @@ exports[`Header snapshot 1`] = `
             </a>
           </li>
           <li
-            className="nav-item"
+            className="nav nav-item"
           >
             <a
               className="nav-link"
@@ -55,10 +55,10 @@ exports[`Header snapshot 1`] = `
             </a>
           </li>
           <li
-            className="nav-item"
+            className="nav nav-item"
           >
             <a
-              className="btn btn-secondary"
+              className="loginButton btn btn-secondary"
               href="#"
               onClick={[Function]}
               type={undefined}

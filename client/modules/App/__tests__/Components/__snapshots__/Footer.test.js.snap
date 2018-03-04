@@ -2,7 +2,7 @@
 
 exports[`Footer snapshot 1`] = `
 <div
-  className={undefined}
+  className="footer"
 >
   <p>
     © 2018 · Mason Park
