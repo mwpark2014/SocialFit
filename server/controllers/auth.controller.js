@@ -9,7 +9,7 @@ function generateToken(user) {
   });
 }
 
-export function loginSuccess(req, res, next) {
+export function loginSuccess(req, res, next) { // eslint-disable-line no-unused-vars
   const userInfo = setUserInfo(req.user);
 
   res.status(200).json({
@@ -18,19 +18,19 @@ export function loginSuccess(req, res, next) {
   });
 }
 
-export function loginFail(err, req, res, next) {
+export function loginFail(err, req, res, next) { // eslint-disable-line no-unused-vars
   res.status(401).json({
     error: err.message,
   });
 }
 
-export function authSuccess(req, res, next) {
+export function authSuccess(req, res, next) { // eslint-disable-line no-unused-vars
   res.status(200).json({
     content: 'The protected test route is functional!',
   });
 }
 
-export function authFail(err, req, res, next) {
+export function authFail(err, req, res, next) { // eslint-disable-line no-unused-vars
   res.status(401).json({
     error: err.message,
   });
@@ -70,12 +70,12 @@ export function register(req, res, next) { // eslint-disable-line consistent-ret
       name,
     });
 
-    user.save((err, user) => {
+    user.save((err, user) => { // eslint-disable-line no-shadow
       if (err) return next(err);
 
       const userInfo = setUserInfo(user);
 
-      res.status(201).json({
+      return res.status(201).json({
         token: `JWT ${generateToken(userInfo)}`,
         user: userInfo,
       });

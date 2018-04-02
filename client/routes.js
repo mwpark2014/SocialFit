@@ -46,7 +46,7 @@ export default (
       path="/users/:username"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, ReqAuth(require('./modules/Dash/pages/DashboardPage').default));
+          cb(null, ReqAuth(require('./modules/Dash/pages/DashboardPage').default)); // eslint-disable-line new-cap
         });
       }}
     />

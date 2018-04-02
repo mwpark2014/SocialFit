@@ -1,4 +1,5 @@
 import callApi from '../../util/apiCaller';
+import cookie from 'react-cookie';
 
 // Export Constants
 export const ADD_POST = 'ADD_POST';
@@ -21,6 +22,9 @@ export function addPostRequest(post) {
         content: post.content,
         target: post.target,
       },
+    }, {
+      'content-type': 'application/json',
+      Authorization: cookie.load('token'),
     }).then(res => dispatch(addPost(res.post)))
     .catch(err => console.log(err));
   };

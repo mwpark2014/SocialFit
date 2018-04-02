@@ -1,6 +1,12 @@
 import { Router } from 'express';
 import * as PostController from '../controllers/post.controller';
 const router = new Router();
+import passport from 'passport';
+import passportService from '../config/passport';
+
+passportService();
+
+const requireAuth = passport.authenticate('jwt', { failWithError: true, session: false });
 
 // Get all Posts
 router.route('/posts').get(PostController.getPosts);
@@ -12,7 +18,8 @@ router.route('/posts/:cuid').get(PostController.getPost);
 router.route('/posts/users/:target').get(PostController.getPostsByTargetUser);
 
 // Add a new Post
-router.route('/posts').post(PostController.addPost);
+router.post('/posts', requireAuth, PostController.addPost,
+    PostController.authError);
 
 // Delete a post by cuid
 router.route('/posts/:cuid').delete(PostController.deletePost);

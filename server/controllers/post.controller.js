@@ -2,6 +2,12 @@ import Post from '../models/post';
 import cuid from 'cuid';
 import sanitizeHtml from 'sanitize-html';
 
+export function authError(err, req, res, next) { // eslint-disable-line no-unused-vars
+  res.status(401).json({
+    error: err.message,
+  });
+}
+
 /**
  * Get all posts
  * @param req
@@ -40,7 +46,11 @@ export function getPostsByTargetUser(req, res) {
  */
 export function addPost(req, res) {
   if (!req.body.post.author || !req.body.post.content || !req.body.post.target) {
-    res.status(403).end();
+    return res.status(403).end();
+  }
+  const userId = req.user.username;
+  if (req.body.post.author !== userId) {
+    return res.status(401).json({ error: 'You are not authorized to create this post.' });
   }
 
   const newPost = new Post(req.body.post);
@@ -50,11 +60,11 @@ export function addPost(req, res) {
   newPost.content = sanitizeHtml(newPost.content);
 
   newPost.cuid = cuid();
-  newPost.save((err, saved) => {
+  return newPost.save((err, saved) => {
     if (err) {
-      res.status(500).send(err);
+      return res.status(500).send(err);
     }
-    res.json({ post: saved });
+    return res.json({ post: saved });
   });
 }
 
