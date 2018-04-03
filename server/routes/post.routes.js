@@ -22,6 +22,7 @@ router.post('/posts', requireAuth, PostController.addPost,
     PostController.authError);
 
 // Delete a post by cuid
-router.route('/posts/:cuid').delete(PostController.deletePost);
+router.delete('/posts/:cuid', requireAuth, PostController.deletePost,
+PostController.authError);
 
 export default router;

@@ -90,7 +90,12 @@ export function getPost(req, res) {
  * @returns void
  */
 export function deletePost(req, res) {
-  Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+  const userId = req.user.username;
+  if (req.body.post.author !== userId) {
+    return res.status(401).json({ error: 'You are not authorized to create this post.' });
+  }
+
+  return Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
     if (err) {
       res.status(500).send(err);
     }
