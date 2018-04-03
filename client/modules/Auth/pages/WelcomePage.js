@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Register from '../components/Register';
 import Login from '../components/Login';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'reactstrap';
 
 // Import Style
 import styles from './welcomepage.css';

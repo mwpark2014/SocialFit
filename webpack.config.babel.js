@@ -20,6 +20,7 @@ module.exports = {
     ],
   },
   module: {
+    noParse: /node_modules\/reactstrap-tether\/dist\/tether.js/,
     loaders: [
       {
         test: /\.css$/,

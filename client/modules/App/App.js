@@ -65,7 +65,7 @@ export class App extends Component {
           />
           <Header
             authenticated={this.props.authenticated} loginButton={this.props.loginButton}
-            activateLoginButton={this.activateLoginButton}
+            activateLoginButton={this.activateLoginButton} location={this.props.location}
             deactivateLoginButton={this.deactivateLoginButton}
             redirectToWelcomePage={this.redirectToWelcomePage}
           />
@@ -84,6 +84,7 @@ App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   loginButton: PropTypes.bool.isRequired,
 };
 

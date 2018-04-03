@@ -13,7 +13,7 @@ export class DashPostList extends Component {
     return (
       <div>
         {
-          this.props.data.map(post => (
+          this.props.data.filter(post => post.target === this.props.target).map(post => (
             <DashPost
               post={post}
               key={post.cuid}
@@ -28,6 +28,7 @@ export class DashPostList extends Component {
 DashPostList.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
+  target: PropTypes.string.isRequired,
 };
 
 export default DashPostList;

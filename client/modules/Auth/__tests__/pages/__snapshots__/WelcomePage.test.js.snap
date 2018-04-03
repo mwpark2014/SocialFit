@@ -1,0 +1,790 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test render & styles WelcomePage snapshot 1`] = `
+<div
+  className="welcomeContainer"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col col-md-7"
+    />
+    <div
+      className="col col-md-5"
+    >
+      <div
+        className="authContainer"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Name
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="name"
+                  onChange={[Function]}
+                  placeholder="Name"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Username
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="username"
+                  onChange={[Function]}
+                  placeholder="Username"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Email
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email"
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Confirm Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password2"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col col-md-7 offset-md-4"
+            >
+              <button
+                className="btn btn-secondary btn-block"
+                onClick={[Function]}
+                type="submit"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test render & styles WelcomePage snapshot 2`] = `
+<div
+  authenticated={false}
+  className="welcomeContainer"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col col-md-7"
+    />
+    <div
+      className="col col-md-5"
+    >
+      <div
+        className="authContainer"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Name
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="name"
+                  onChange={[Function]}
+                  placeholder="Name"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Username
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="username"
+                  onChange={[Function]}
+                  placeholder="Username"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Email
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email"
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Confirm Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password2"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col col-md-7 offset-md-4"
+            >
+              <button
+                className="btn btn-secondary btn-block"
+                onClick={[Function]}
+                type="submit"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test render & styles WelcomePage snapshot 3`] = `
+<div
+  authenticated={false}
+  className="welcomeContainer"
+  loginButton={false}
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col col-md-7"
+    />
+    <div
+      className="col col-md-5"
+    >
+      <div
+        className="authContainer"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Name
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="name"
+                  onChange={[Function]}
+                  placeholder="Name"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Username
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="username"
+                  onChange={[Function]}
+                  placeholder="Username"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Email
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email"
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Confirm Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password2"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col col-md-7 offset-md-4"
+            >
+              <button
+                className="btn btn-secondary btn-block"
+                onClick={[Function]}
+                type="submit"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test render & styles WelcomePage snapshot 4`] = `
+<div
+  authenticated={true}
+  className="welcomeContainer"
+  loginButton={false}
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col col-md-7"
+    />
+    <div
+      className="col col-md-5"
+    >
+      <div
+        className="authContainer"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Name
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="name"
+                  onChange={[Function]}
+                  placeholder="Name"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Username
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="username"
+                  onChange={[Function]}
+                  placeholder="Username"
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Email
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email"
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="form-group"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col col-md-4"
+              >
+                <label
+                  className=""
+                  htmlFor={undefined}
+                >
+                  Confirm Password
+                </label>
+              </div>
+              <div
+                className="col col-md-7"
+              >
+                <input
+                  className="form-control"
+                  name="password2"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col col-md-7 offset-md-4"
+            >
+              <button
+                className="btn btn-secondary btn-block"
+                onClick={[Function]}
+                type="submit"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

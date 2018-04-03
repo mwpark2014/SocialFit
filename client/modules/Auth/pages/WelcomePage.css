@@ -1,8 +1,14 @@
-.welcomeContainer { 
+.welcomeContainer {
   margin: 0 auto;
   background-size: 500px auto;
   background: url('../../../assets/welcome-bg_1280x583.jpeg') no-repeat fixed center;
   height: 100%;
+}
+
+@media screen and (min-width: 1300px) {
+  .welcomeContainer {
+    background: url('../../../assets/welcome-bg_1920x1280.jpeg') no-repeat fixed center;
+  }
 }
 
 .authContainer {

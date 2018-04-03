@@ -42,6 +42,14 @@ export default (
         });
       }}
     />
+    <Route
+      path="/users/:username"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, ReqAuth(require('./modules/Dash/pages/DashboardPage').default));
+        });
+      }}
+    />
     {/* <Route
       path="/posts/:slug-:cuid"
       getComponent={(nextState, cb) => {
