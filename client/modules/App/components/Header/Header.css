@@ -40,9 +40,3 @@ a.site-title.site-title{
     margin-top: 16px;
   }
 }
-
-.clearfix::after {
-  clear: both;
-  display: block;
-  content:"";
-}

@@ -6,14 +6,11 @@
   width: 100%;
   height: 76px;
   display: block;
+  border-radius: 6px;
+  background-color: #fff;
+  padding:6px;
 }
 
 .postButton {
   float:right;
-}
-
-.clearfix::after {
-  clear: both;
-  display: block;
-  content:"";
 }

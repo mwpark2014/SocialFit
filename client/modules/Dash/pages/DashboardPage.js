@@ -31,11 +31,11 @@ export class DashboardPage extends Component {
         <Row>
           <Col md={2} />
           <Col md={10}>
-            <DashPostBox author={this.props.username} target={this.state.targetUser} />
-            <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare lorem mi, id efficitur ipsum faucibus vel. Vivamus quis vulputate lorem. Suspendisse suscipit suscipit tortor, venenatis ornare erat egestas ac. Nam blandit consequat turpis sed dictum. Aliquam ut diam vel ante pellentesque dictum ut ullamcorper justo. Proin et tempor velit, quis vehicula nulla. In viverra tellus ac est efficitur, sed pulvinar sem bibendum. Curabitur nibh tortor, dictum eu porta vitae, facilisis nec lacus.</p>
-              <p>Vestibulum non felis pretium nulla scelerisque elementum. Praesent et mattis elit. Fusce congue dui lacus, sit amet pulvinar justo vehicula eu. Phasellus posuere tortor nunc, vel sagittis tortor interdum sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate nec odio ut fermentum. Donec accumsan augue nec nunc tincidunt auctor. Nam euismod ornare orci vel iaculis. Proin suscipit aliquet diam, id varius quam aliquet at. Nullam lacinia augue sed massa sollicitudin ornare.</p>
+            <div className={styles.title}>
+              Profile Page of {this.state.targetUser}
             </div>
+            <DashPostBox author={this.props.username} target={this.state.targetUser} />
+            <hr />
             <DashPostList
               target={this.state.targetUser}
               data={this.props.data} fetchPosts={this.props.fetchPosts}
