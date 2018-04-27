@@ -54,7 +54,7 @@ export function registerUser({ email, username, name, password }) {
     callApi('auth/register', 'post', { email, username, name, password })
     .then(response => {
       cookie.save('token', response.token, { path: '/' });
-      dispatch({ type: AUTH_USER });
+      dispatch({ type: AUTH_USER, payload: response.user.name });
       browserHistory.push('/me');
     })
     .catch((error) => {
