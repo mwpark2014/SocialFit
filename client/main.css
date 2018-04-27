@@ -39,7 +39,7 @@ p, h1, h2, h3, a {
 
 @font-face {
 	font-family: "Work Sans";
-	src: url("assets/Work_Sans/worksans-regular-webfont.woff") format("woff");
+	src: url("./assets/Work_Sans/worksans-regular-webfont.woff") format("woff");
 }
 
 .clearfix::after {
