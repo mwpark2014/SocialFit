@@ -17,7 +17,7 @@ export class DashPostBox extends Component {
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  
+
   handlePostSubmit = () => {
     this.props.addPostRequest({ author: this.props.author,
         content: this.state.content,
@@ -33,7 +33,7 @@ export class DashPostBox extends Component {
 
   render() {
     return (
-      <div className={`${styles.container} ${styles.clearfix}`}>
+      <div className={`${styles.container} clearfix`}>
         <textarea
           className={styles.postBox} onChange={this.handleInputChange} value={this.state.content}
           placeholder="Post something on your wall!" required

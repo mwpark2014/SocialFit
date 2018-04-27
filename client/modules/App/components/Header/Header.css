@@ -9,27 +9,29 @@
   overflow: auto;
 }
 
-.site-title {
-  font-weight: 300;
-  font-size: 42px;
-  float: left;
-  margin:0;
+@media (min-width: 768px) {
+  .nav {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
 }
 
-.site-title a {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.596);
-}
-
-.site-title a:hover {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.596);
+a.site-title.site-title{
+  font-weight: 500;
+  font-size: 34px;
+  color: rgba(0, 0, 0, 0.6);
+  padding-top:0px;
+  padding-bottom:0px;
 }
 
 .loginButton {
-  padding: 8px 16px;
-  margin:10px 20px;
-  float: right;
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  :global .navbar-expand-md .navbar-nav .nav-link {
+    padding-right:2rem;
+  }
 }
 
 @media (max-width: 767px){

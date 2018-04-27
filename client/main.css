@@ -41,3 +41,9 @@ p, h1, h2, h3, a {
 	font-family: "Work Sans";
 	src: url("assets/Work_Sans/worksans-regular-webfont.woff") format("woff");
 }
+
+.clearfix::after {
+  clear: both;
+  display: block;
+  content:"";
+}
