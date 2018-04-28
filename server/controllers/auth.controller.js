@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
-import config from '../config/config';
 import setUserInfo from '../util/helpers';
 
 function generateToken(user) {
-  return jwt.sign(user, config.secret, {
+  return jwt.sign(user, process.env.secret, {
     expiresIn: 10080, // in seconds
   });
 }
