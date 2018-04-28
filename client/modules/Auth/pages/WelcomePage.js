@@ -6,7 +6,7 @@ import Login from '../components/Login';
 import { Row, Col } from 'reactstrap';
 
 // Import Style
-import styles from './welcomepage.css';
+import styles from './WelcomePage.css';
 
 // Import Actions
 import { registerUser, loginUser } from '../AuthActions';

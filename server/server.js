@@ -35,13 +35,12 @@ import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import auth from './routes/auth.routes';
 import dummyData from './dummyData';
-import serverConfig from './config/config';
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
 
 // MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, (error) => {
+mongoose.connect(process.env.mongoURL, (error) => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
     throw error;
@@ -146,9 +145,9 @@ app.use((req, res, next) => {
 });
 
 // start app
-app.listen(serverConfig.port, (error) => {
+app.listen(process.env.port, (error) => {
   if (!error) {
-    console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+    console.log(`MERN is running on port: ${process.env.port}! Build something amazing!`); // eslint-disable-line
   }
 });
 
