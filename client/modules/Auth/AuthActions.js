@@ -37,7 +37,7 @@ export function logoutUser() {
 
 export function loginUser({ username, password }) {
   return (dispatch) => {
-    callApi('auth/login', 'post', { username, password })
+    return callApi('auth/login', 'post', { username, password })
     .then(response => {
       cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER, payload: response.user.name });
@@ -51,7 +51,7 @@ export function loginUser({ username, password }) {
 
 export function registerUser({ email, username, name, password }) {
   return (dispatch) => {
-    callApi('auth/register', 'post', { email, username, name, password })
+    return callApi('auth/register', 'post', { email, username, name, password })
     .then(response => {
       cookie.save('token', response.token, { path: '/' });
       dispatch({ type: AUTH_USER, payload: response.user.name });
@@ -65,7 +65,7 @@ export function registerUser({ email, username, name, password }) {
 
 export function getForgotPasswordToken({ email }) {
   return (dispatch) => {
-    callApi('/auth/forgot-password', 'post', { email })
+    return callApi('/auth/forgot-password', 'post', { email })
     .then((response) => {
       dispatch({
         type: FORGOT_PASSWORD_REQUEST,
@@ -80,7 +80,7 @@ export function getForgotPasswordToken({ email }) {
 
 export function resetPassword(token, { password }) {
   return (dispatch) => {
-    callApi(`/auth/reset-password/${token}`, 'post', { password })
+    return callApi(`/auth/reset-password/${token}`, 'post', { password })
     .then((response) => {
       dispatch({
         type: RESET_PASSWORD_REQUEST,
@@ -97,7 +97,7 @@ export function resetPassword(token, { password }) {
 
 export function protectedTest() {
   return (dispatch) => {
-    callApi('auth/protected', 'get', undefined,
+    return callApi('auth/protected', 'get', undefined,
       { 'content-type': 'application/json',
           Authorization: cookie.load('token'),
       })
@@ -106,6 +106,21 @@ export function protectedTest() {
         type: PROTECTED_TEST,
         payload: response.content,
       });
+    })
+    .catch((error) => {
+      errorHandler(dispatch, error, AUTH_ERROR);
+    });
+  };
+}
+
+export function continueSession() {
+  return (dispatch) => {
+    return callApi('auth/protected', 'get', undefined,
+    { 'content-type': 'application/json',
+        Authorization: cookie.load('token'),
+    })
+    .then(response => {
+      dispatch({ type: AUTH_USER, payload: response.username });
     })
     .catch((error) => {
       errorHandler(dispatch, error, AUTH_ERROR);

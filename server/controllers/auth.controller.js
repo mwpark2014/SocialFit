@@ -25,6 +25,7 @@ export function loginFail(err, req, res, next) { // eslint-disable-line no-unuse
 
 export function authSuccess(req, res, next) { // eslint-disable-line no-unused-vars
   res.status(200).json({
+    username: req.user.username,
     content: 'The protected test route is functional!',
   });
 }
