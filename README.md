@@ -46,3 +46,8 @@ const config = {
 };
 ```
 Now, you can run by using command lines npm install and npm start!
+
+A live production version of the code is located here: [socialfit.herokuapp.com](https://www.socialfit.herokuapp.com)
+
+There is no guarantee of the build being the most recent version. Always refer back to [github.com/mwpark2014/SocialFit](https://github.com/mwpark2014/SocialFit)
+
