@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
+import cookie from 'react-cookie';
 
 // Webpack Requirements
 import webpack from 'webpack';
@@ -123,6 +124,7 @@ app.use((req, res, next) => {
       return next();
     }
 
+    cookie.setRawCookie(req.headers.cookie);
     const store = configureStore();
 
     return fetchComponentData(store, renderProps.components, renderProps.params)

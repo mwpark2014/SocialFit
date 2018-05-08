@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { continueSession } from '../modules/Auth/AuthActions';
 
 export default function (ComposedComponent) {
   class Authentication extends Component {
@@ -27,6 +28,9 @@ export default function (ComposedComponent) {
       return <div></div>;
     }
   }
+
+  // Actions required to provide data for this component to render in sever side.
+  Authentication.need = [() => { return continueSession(); }];
 
   function mapStatetoProps(state) {
     return { authenticated: state.auth.authenticated };
